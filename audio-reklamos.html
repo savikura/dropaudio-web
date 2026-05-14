@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Audio reklamos gamyba — DROPAUDIO</title>
+  <meta name="description" id="page-desc" content="Radijo reklamos gamyba Vilniuje: scenarijus, balsas, muzika, garso efektai, miksas. Broadcast-ready pristatymas. Greiti terminai.">
+  <style>
+    @font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Black.otf')format('opentype');font-weight:900}
+    @font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Bold.otf')format('opentype');font-weight:700}
+    @font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Medium.otf')format('opentype');font-weight:500}
+    @font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Regular.otf')format('opentype');font-weight:400}
+    @font-face{font-family:'Ahamono';src:url('fonts/Ahamono-Regular.otf')format('opentype');font-weight:400}
+    :root{--black:#231F20;--yellow:#EEDF15;--grey:#A7A9AB;--light:#F0EEEB;--white:#FFFFFF;--max:1200px;--pad:clamp(24px,4vw,64px)}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Geomanist','Helvetica Neue',Arial,sans-serif;font-weight:400;color:var(--black);background:var(--white)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+    p{line-height:1.7}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--black);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,.07)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+    .nav-logo img{height:30px}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.3px;transition:color .2s}
+    .nav-links a:hover{color:#fff}
+    .nav-links a.active{color:var(--yellow)}
+    .nav-right{display:flex;align-items:center;gap:20px}
+    .lang-sw{display:flex;gap:2px}
+    .lang-btn{background:none;border:none;cursor:pointer;font-family:'Ahamono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);padding:5px 9px;border-radius:2px;transition:color .2s}
+    .lang-btn:hover{color:rgba(255,255,255,.7)}
+    .lang-btn.active{color:var(--yellow)}
+    .nav-cta{background:var(--yellow);color:var(--black);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;transition:opacity .2s}
+    .nav-cta:hover{opacity:.85}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{width:22px;height:2px;background:var(--white);display:block}
+    .nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;z-index:190;background:var(--black);padding:24px var(--pad) 32px;border-top:1px solid rgba(255,255,255,.07)}
+    .nav-drawer.open{display:block}
+    .nav-drawer ul{list-style:none}
+    .nav-drawer li{border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-drawer a{display:block;font-size:15px;font-weight:500;color:rgba(255,255,255,.8);padding:14px 0}
+    .page-hero{background:var(--black);padding:144px 0 80px;position:relative;overflow:hidden}
+    .daw-bg{position:absolute;inset:0;pointer-events:none;opacity:.05;display:flex;flex-direction:column;justify-content:center;padding:40px var(--pad);gap:10px}
+    .daw-row{display:flex;gap:8px;align-items:center}
+    .daw-track{height:12px;background:var(--white);border-radius:2px}
+    .page-hero .container{position:relative;z-index:2}
+    .breadcrumb{font-family:'Ahamono',monospace;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;margin-bottom:20px}
+    .breadcrumb a{color:rgba(255,255,255,.35);transition:color .2s}
+    .breadcrumb a:hover{color:var(--yellow)}
+    .breadcrumb span{margin:0 8px}
+    .page-label{font-family:'Ahamono',monospace;font-size:11px;color:var(--yellow);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:block}
+    .page-h1{font-size:clamp(30px,4vw,54px);font-weight:900;color:var(--white);line-height:1.05;margin-bottom:20px;max-width:680px}
+    .page-sub{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.6);line-height:1.65;max-width:520px;margin-bottom:36px}
+    .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:14px 30px;transition:opacity .2s}
+    .btn-yellow:hover{opacity:.85}
+    #service-detail{padding:96px 0;background:var(--white)}
+    .detail-grid{display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:start}
+    .detail-body h2{font-size:clamp(22px,2.5vw,32px);font-weight:900;margin-bottom:20px;color:var(--black)}
+    .detail-body p{font-size:15px;color:#555;margin-bottom:20px}
+    .detail-body ul{margin:0 0 24px;padding-left:0;list-style:none}
+    .detail-body ul li{font-size:15px;color:#555;padding:8px 0 8px 20px;border-bottom:1px solid #F0EEEB;position:relative}
+    .detail-body ul li::before{content:'—';position:absolute;left:0;color:var(--yellow);font-weight:700}
+    .detail-sidebar{position:sticky;top:100px}
+    .sidebar-box{background:var(--light);padding:32px;margin-bottom:20px}
+    .sidebar-box-title{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+    .sidebar-box p{font-size:13px;color:#555;line-height:1.65}
+    #svc-process{background:var(--black);padding:80px 0}
+    .s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:10px}
+    .s-title{font-size:clamp(24px,2.8vw,38px);font-weight:900;margin-bottom:48px}
+    .s-title.dark{color:var(--black)}
+    .s-title.white{color:var(--white)}
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+    .step{border-top:2px solid rgba(255,255,255,.12);padding-top:28px}
+    .step-num{font-family:'Ahamono',monospace;font-size:11px;color:var(--yellow);letter-spacing:2px;margin-bottom:16px}
+    .step-name{font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px}
+    .step-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+    #related{padding:80px 0;background:var(--light)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#D8D6D3}
+    .related-card{background:var(--white);padding:32px 28px;transition:background .25s;text-decoration:none;color:inherit;display:block}
+    .related-card:hover{background:var(--black)}
+    .related-card:hover .rc-name,.related-card:hover .rc-desc{color:var(--white)}
+    .related-card:hover .rc-arrow{color:var(--yellow)}
+    .rc-name{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--black);transition:color .25s;line-height:1.35}
+    .rc-desc{font-size:13px;color:var(--grey);line-height:1.55;transition:color .25s}
+    .rc-arrow{font-size:16px;color:var(--grey);margin-top:16px;display:block;transition:color .25s}
+    #contact-cta{background:var(--yellow);padding:96px 0}
+    .contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+    .contact-cta-text h2{font-size:clamp(24px,3vw,40px);font-weight:900;color:var(--black);margin-bottom:12px}
+    .contact-cta-text p{font-size:16px;color:var(--black);opacity:.65;max-width:440px;line-height:1.6}
+    .btn-dark{display:inline-block;background:var(--black);color:var(--white);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:16px 34px;transition:opacity .2s}
+    .btn-dark:hover{opacity:.8}
+    footer{background:var(--black);padding:56px 0 32px}
+    .footer-grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .footer-logo img{height:26px;margin-bottom:16px}
+    .footer-tagline{font-size:12px;color:rgba(255,255,255,.35);line-height:1.6}
+    .footer-col-title{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:10px}
+    .footer-col a{font-size:13px;color:rgba(255,255,255,.55);transition:color .2s}
+    .footer-col a:hover{color:var(--white)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px}
+    .footer-copy{font-size:11px;color:rgba(255,255,255,.2);font-family:'Ahamono',monospace}
+    @media(max-width:960px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.detail-grid{grid-template-columns:1fr}.detail-sidebar{position:static}.process-steps{grid-template-columns:repeat(2,1fr)}.related-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>:first-child{grid-column:1/-1}}
+    @media(max-width:560px){.process-steps{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.contact-cta-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about" data-t="nav_about">Apie mus</a></li>
+      <li><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos</a></li>
+      <li><a href="index.html#work" data-t="nav_work">Atlikti darbai</a></li>
+      <li><a href="index.html#audio" data-t="nav_voices">Balsai</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="lt" onclick="setLang('lt')">LT</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#contact" class="nav-cta" data-t="nav_cta">Susisiekti</a>
+    </div>
+    <button class="hamburger" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="index.html#about" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
+    <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li><a href="index.html#work" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
+    <li><a href="index.html#contact" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="daw-bg" id="dawBg"></div>
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">DROPAUDIO</a><span>›</span><a href="paslaugos.html" data-t="nav_services">Paslaugos</a><span>›</span><span data-t="svc_name">Audio reklamos gamyba</span></div>
+    <span class="page-label">02</span>
+    <h1 class="page-h1" data-t="h1">Audio reklamos gamyba</h1>
+    <p class="page-sub" data-t="h1_sub">Radijo reklama nuo pirmos idėjos iki transliacijai paruošto failo. Scenarijus, balsas, muzika, miksas — viename procese.</p>
+    <a href="index.html#contact" class="btn-yellow" data-t="hero_cta">Aptarti projektą</a>
+  </div>
+</section>
+
+<section id="service-detail">
+  <div class="container">
+    <div class="detail-grid">
+      <div class="detail-body">
+        <h2 data-t="body_h2">Ne tik įrašas — pilna produkcija</h2>
+        <p data-t="body_p1">Radijo reklama dažnai yra greičiausias ir tiesiausias kelias pas klausytoją. Bet kad ji veiktų — turi būti tiksliai padaryta. Tinkamas balsas, tinkama muzika, tinkamas tempas. Mes nesustojame prie techninių reikalavimų — mes galvojame, kaip reklama skambės ore.</p>
+        <p data-t="body_p2">Galime dirbti su paruoštu scenarijumi arba kurti nuo nulio. Abu atvejai — ta pati atsakomybė iki galutinio failo.</p>
+
+        <h2 data-t="body_h2b">Paslaugos apimtis</h2>
+        <ul>
+          <li data-t="li_1">Scenarijaus rašymas arba redakcija — ritmas, tempas, Call-to-Action</li>
+          <li data-t="li_2">Balsų atranka ir casting iš 700+ talentų duomenų bazės</li>
+          <li data-t="li_3">Profesionalus įrašymas ProTools studijoje</li>
+          <li data-t="li_4">Fono muzikos parinkimas arba originali kompozicija</li>
+          <li data-t="li_5">Garso efektai ir post-produkcija</li>
+          <li data-t="li_6">Finalinis miksas, loudness normalizacija pagal LRT/EBU R128</li>
+          <li data-t="li_7">Pristatymas radijo stoties reikalaujamu formatu</li>
+        </ul>
+      </div>
+      <div class="detail-sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-box-title" data-t="sb1_title">Formatai</div>
+          <ul style="list-style:none;padding:0">
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8">WAV 48kHz / 24bit</li>
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8">MP3 320kbps</li>
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fmt_3">EBU R128 / -23 LUFS</li>
+            <li style="font-size:13px;color:#555;padding:7px 0" data-t="fmt_4">Bet koks kitas spec pagal užsakymą</li>
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-box-title" data-t="sb2_title">Trukmės</div>
+          <p data-t="sb2_body">15s, 20s, 30s, 60s — standartinės radijo reklamos trukmės. Gamybos terminas nuo 24 valandų.</p>
+        </div>
+        <div style="margin-top:20px">
+          <a href="index.html#contact" class="btn-yellow" style="display:block;text-align:center" data-t="hero_cta">Aptarti projektą</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="svc-process">
+  <div class="container">
+    <div class="s-label" style="color:rgba(255,255,255,.35)">PROCESAS</div>
+    <h2 class="s-title white" data-t="proc_title">Nuo idėjos iki eterio</h2>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">01</div><div class="step-name" data-t="p1n">Briefas</div><div class="step-desc" data-t="p1d">Žinutė, tonas, trukmė, terminas. Jei turite scenarijų — puiku. Jei ne — sukuriame kartu.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-name" data-t="p2n">Produkcija</div><div class="step-desc" data-t="p2d">Balsas, muzika, garso efektai — vienas sklandus procesas mūsų studijoje.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-name" data-t="p3n">Pataisymai</div><div class="step-desc" data-t="p3d">Vienas pataisymų etapas įskaičiuotas į kainą. Dažniausiai jo nereikia.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-name" data-t="p4n">Pristatymas</div><div class="step-desc" data-t="p4d">Broadcast-ready failas radijo stoties reikalaujamu formatu. Laiku.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="related">
+  <div class="container">
+    <div class="s-label">KITOS PASLAUGOS</div>
+    <h2 class="s-title dark" data-t="rel_title">Taip pat galime padėti</h2>
+    <div class="related-grid">
+      <a href="tv-reklamos.html" class="related-card">
+        <div class="rc-name" data-t="rel_1_n">TV reklamos įgarsinimas</div>
+        <div class="rc-desc" data-t="rel_1_d">Casting ir broadcast-ready įrašas TV projektams</div>
+        <span class="rc-arrow">→</span>
+      </a>
+      <a href="muzikos-kuryba.html" class="related-card">
+        <div class="rc-name" data-t="rel_2_n">Originalios muzikos kūryba</div>
+        <div class="rc-desc" data-t="rel_2_d">Jingle'ai ir originali muzika reklamai</div>
+        <span class="rc-arrow">→</span>
+      </a>
+      <a href="garso-adaptacija.html" class="related-card">
+        <div class="rc-name" data-t="rel_3_n">Garso lokalizacija</div>
+        <div class="rc-desc" data-t="rel_3_d">Kampanijos adaptacija Baltijos rinkai</div>
+        <span class="rc-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact-cta">
+  <div class="container">
+    <div class="contact-cta-inner">
+      <div class="contact-cta-text">
+        <h2 data-t="cta_h">Reikia radijo reklamos?</h2>
+        <p data-t="cta_p">Pasidalinkite scenarijumi arba idėja — pasiūlysime sprendimą per dieną.</p>
+      </div>
+      <a href="mailto:hello@dropaudio.lt" class="btn-dark" data-t="cta_btn">Rašyti mums</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></div><div class="footer-tagline">Baltic audio. Zero surprises.</div></div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_svc">Paslaugos</div>
+        <ul>
+          <li><a href="tv-reklamos.html">TV ir radijo reklamos</a></li>
+          <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+          <li><a href="muzikos-kuryba.html">Muzikos kūryba</a></li>
+          <li><a href="animacijos-igarsinimas.html">Animacijos įgarsinimas</a></li>
+          <li><a href="garso-adaptacija.html">Garso lokalizacija</a></li>
+          <li><a href="ivr.html">IVR ir autoatsakikliai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_contact">Kontaktai</div>
+        <ul>
+          <li><a href="mailto:hello@dropaudio.lt">hello@dropaudio.lt</a></li>
+          <li><a href="tel:+37061069726">+370 610 69 726</a></li>
+          <li><a href="apie.html" data-t="nav_about">Apie mus</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 DROPAUDIO. Vilnius, Lithuania.</span></div>
+  </div>
+</footer>
+
+<script>
+const T={lt:{nav_about:'Apie mus',nav_services:'Paslaugos',nav_work:'Atlikti darbai',nav_voices:'Balsai',nav_cta:'Susisiekti',svc_name:'Audio reklamos gamyba',h1:'Audio reklamos gamyba',h1_sub:'Radijo reklama nuo pirmos idėjos iki transliacijai paruošto failo. Scenarijus, balsas, muzika, miksas — viename procese.',hero_cta:'Aptarti projektą',body_h2:'Ne tik įrašas — pilna produkcija',body_p1:'Radijo reklama dažnai yra greičiausias ir tiesiausias kelias pas klausytoją. Bet kad ji veiktų — turi būti tiksliai padaryta. Tinkamas balsas, tinkama muzika, tinkamas tempas. Mes nesustojame prie techninių reikalavimų — mes galvojame, kaip reklama skambės ore.',body_p2:'Galime dirbti su paruoštu scenarijumi arba kurti nuo nulio. Abu atvejai — ta pati atsakomybė iki galutinio failo.',body_h2b:'Paslaugos apimtis',li_1:'Scenarijaus rašymas arba redakcija — ritmas, tempas, Call-to-Action',li_2:'Balsų atranka ir casting iš 700+ talentų duomenų bazės',li_3:'Profesionalus įrašymas ProTools studijoje',li_4:'Fono muzikos parinkimas arba originali kompozicija',li_5:'Garso efektai ir post-produkcija',li_6:'Finalinis miksas, loudness normalizacija pagal LRT/EBU R128',li_7:'Pristatymas radijo stoties reikalaujamu formatu',sb1_title:'Formatai',fmt_3:'EBU R128 / -23 LUFS',fmt_4:'Bet koks kitas spec pagal užsakymą',sb2_title:'Trukmės',sb2_body:'15s, 20s, 30s, 60s — standartinės radijo reklamos trukmės. Gamybos terminas nuo 24 valandų.',proc_title:'Nuo idėjos iki eterio',p1n:'Briefas',p1d:'Žinutė, tonas, trukmė, terminas. Jei turite scenarijų — puiku. Jei ne — sukuriame kartu.',p2n:'Produkcija',p2d:'Balsas, muzika, garso efektai — vienas sklandus procesas mūsų studijoje.',p3n:'Pataisymai',p3d:'Vienas pataisymų etapas įskaičiuotas į kainą. Dažniausiai jo nereikia.',p4n:'Pristatymas',p4d:'Broadcast-ready failas radijo stoties reikalaujamu formatu. Laiku.',rel_title:'Taip pat galime padėti',rel_1_n:'TV reklamos įgarsinimas',rel_1_d:'Casting ir broadcast-ready įrašas TV projektams',rel_2_n:'Originalios muzikos kūryba',rel_2_d:'Jingle\'ai ir originali muzika reklamai',rel_3_n:'Garso lokalizacija',rel_3_d:'Kampanijos adaptacija Baltijos rinkai',cta_h:'Reikia radijo reklamos?',cta_p:'Pasidalinkite scenarijumi arba idėja — pasiūlysime sprendimą per dieną.',cta_btn:'Rašyti mums',fc_svc:'Paslaugos',fc_contact:'Kontaktai'},en:{nav_about:'About us',nav_services:'Services',nav_work:'Work',nav_voices:'Voices',nav_cta:'Contact',svc_name:'Audio advertising production',h1:'Audio advertising production',h1_sub:'Radio commercials from first idea to broadcast-ready file. Script, voice, music, mix — one process.',hero_cta:'Discuss your project',body_h2:'Not just a recording — full production',body_p1:'A radio commercial is often the fastest, most direct route to the listener. But for it to work — it has to be done right. The right voice, the right music, the right pacing. We don\'t stop at technical requirements — we think about how the ad will sound on air.',body_p2:'We can work with a ready script or build from scratch. Either way, the same responsibility through to the final file.',body_h2b:'Service scope',li_1:'Script writing or editing — rhythm, pacing, call-to-action',li_2:'Voice casting from 700+ talent database',li_3:'Professional recording in ProTools studio',li_4:'Background music selection or original composition',li_5:'Sound effects and post-production',li_6:'Final mix, loudness normalisation to EBU R128',li_7:'Delivery in the station\'s required format',sb1_title:'Formats',fmt_3:'EBU R128 / -23 LUFS',fmt_4:'Any other spec on request',sb2_title:'Durations',sb2_body:'15s, 20s, 30s, 60s — standard radio commercial lengths. Production turnaround from 24 hours.',proc_title:'From idea to air',p1n:'Brief',p1d:'Message, tone, duration, deadline. Got a script — great. Don\'t have one — we build it together.',p2n:'Production',p2d:'Voice, music, sound effects — one smooth process in our studio.',p3n:'Revisions',p3d:'One revision round included in the price. Usually not needed.',p4n:'Delivery',p4d:'Broadcast-ready file in the station\'s required format. On time.',rel_title:'We can also help with',rel_1_n:'TV commercial voiceover',rel_1_d:'Casting and broadcast-ready recording for TV projects',rel_2_n:'Original music composition',rel_2_d:'Jingles and original music for advertising',rel_3_n:'Audio localization',rel_3_d:'Campaign adaptation for the Baltic market',cta_h:'Need a radio commercial?',cta_p:'Share your script or idea — we\'ll propose a solution within a day.',cta_btn:'Write to us',fc_svc:'Services',fc_contact:'Contact'}};
+let lang='lt';
+function setLang(l){lang=l;document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(T[l][k]!==undefined)el.innerHTML=T[l][k];});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.documentElement.lang=l;document.getElementById('page-title').textContent=l==='lt'?'Audio reklamos gamyba — DROPAUDIO':'Audio Advertising Production — DROPAUDIO';document.getElementById('page-desc').setAttribute('content',l==='lt'?'Radijo reklamos gamyba Vilniuje: scenarijus, balsas, muzika, garso efektai, miksas. Broadcast-ready pristatymas.':'Radio commercial production in Vilnius: script, voice, music, sound effects, mix. Broadcast-ready delivery.');}
+function toggleNav(){document.getElementById('drawer').classList.toggle('open');}
+function closeNav(){document.getElementById('drawer').classList.remove('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10));
+(function buildDaw(){const c=document.getElementById('dawBg'),w=[60,110,80,140,55,95,70,120];for(let i=0;i<8;i++){const r=document.createElement('div');r.className='daw-row';const n=3+(i%3);for(let j=0;j<n;j++){const t=document.createElement('div');t.className='daw-track';t.style.width=w[(i*n+j)%w.length]+'px';r.appendChild(t);}c.appendChild(r);}})();
+</script>
+</body>
+</html>

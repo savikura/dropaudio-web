@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">TV ir radijo reklamos įgarsinimas — DROPAUDIO</title>
+  <meta name="description" id="page-desc" content="Profesionalus TV ir radijo reklamos įgarsinimas Vilniuje. Balsų atranka, įrašymas, miksas — broadcast-ready. Lietuviškai, latviškai, estiškai.">
+  <style>
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Black.otf') format('opentype'); font-weight: 900; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Bold.otf') format('opentype'); font-weight: 700; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Medium.otf') format('opentype'); font-weight: 500; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Regular.otf') format('opentype'); font-weight: 400; }
+    @font-face { font-family: 'Ahamono'; src: url('fonts/Ahamono-Regular.otf') format('opentype'); font-weight: 400; }
+    :root { --black:#231F20; --yellow:#EEDF15; --grey:#A7A9AB; --light:#F0EEEB; --white:#FFFFFF; --max:1200px; --pad:clamp(24px,4vw,64px); }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Geomanist','Helvetica Neue',Arial,sans-serif; font-weight:400; color:var(--black); background:var(--white); }
+    a { text-decoration:none; color:inherit; }
+    img { max-width:100%; display:block; }
+    .container { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+    p { line-height: 1.7; }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--black); transition:box-shadow 0.3s; }
+    nav.scrolled { box-shadow:0 1px 0 rgba(255,255,255,0.07); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; height:68px; max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+    .nav-logo img { height:30px; }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-size:13px; font-weight:500; color:rgba(255,255,255,0.7); letter-spacing:0.3px; transition:color 0.2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-links a.active { color:var(--yellow); }
+    .nav-right { display:flex; align-items:center; gap:20px; }
+    .lang-sw { display:flex; gap:2px; }
+    .lang-btn { background:none; border:none; cursor:pointer; font-family:'Ahamono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); padding:5px 9px; border-radius:2px; transition:color 0.2s; }
+    .lang-btn:hover { color:rgba(255,255,255,0.7); }
+    .lang-btn.active { color:var(--yellow); }
+    .nav-cta { background:var(--yellow); color:var(--black); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:10px 20px; transition:opacity 0.2s; }
+    .nav-cta:hover { opacity:0.85; }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { width:22px; height:2px; background:var(--white); display:block; }
+    .nav-drawer { display:none; position:fixed; top:68px; left:0; right:0; z-index:190; background:var(--black); padding:24px var(--pad) 32px; border-top:1px solid rgba(255,255,255,0.07); }
+    .nav-drawer.open { display:block; }
+    .nav-drawer ul { list-style:none; }
+    .nav-drawer li { border-bottom:1px solid rgba(255,255,255,0.07); }
+    .nav-drawer a { display:block; font-size:15px; font-weight:500; color:rgba(255,255,255,0.8); padding:14px 0; }
+
+    .page-hero { background:var(--black); padding:144px 0 80px; position:relative; overflow:hidden; }
+    .daw-bg { position:absolute; inset:0; pointer-events:none; opacity:0.05; display:flex; flex-direction:column; justify-content:center; padding:40px var(--pad); gap:10px; }
+    .daw-row { display:flex; gap:8px; align-items:center; }
+    .daw-track { height:12px; background:var(--white); border-radius:2px; }
+    .page-hero .container { position:relative; z-index:2; }
+    .breadcrumb { font-family:'Ahamono',monospace; font-size:11px; color:rgba(255,255,255,0.35); letter-spacing:1px; margin-bottom:20px; }
+    .breadcrumb a { color:rgba(255,255,255,0.35); transition:color 0.2s; }
+    .breadcrumb a:hover { color:var(--yellow); }
+    .breadcrumb span { margin:0 8px; }
+    .page-label { font-family:'Ahamono',monospace; font-size:11px; color:var(--yellow); letter-spacing:3px; text-transform:uppercase; margin-bottom:20px; display:block; }
+    .page-h1 { font-size:clamp(30px,4vw,54px); font-weight:900; color:var(--white); line-height:1.05; margin-bottom:20px; max-width:680px; }
+    .page-sub { font-size:clamp(15px,1.5vw,17px); color:rgba(255,255,255,0.6); line-height:1.65; max-width:520px; margin-bottom:36px; }
+    .btn-yellow { display:inline-block; background:var(--yellow); color:var(--black); font-weight:700; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:14px 30px; transition:opacity 0.2s; }
+    .btn-yellow:hover { opacity:0.85; }
+
+    /* Content sections */
+    #service-detail { padding:96px 0; background:var(--white); }
+    .detail-grid { display:grid; grid-template-columns:1fr 400px; gap:80px; align-items:start; }
+    .detail-body h2 { font-size:clamp(22px,2.5vw,32px); font-weight:900; margin-bottom:20px; color:var(--black); }
+    .detail-body p { font-size:15px; color:#555; margin-bottom:20px; }
+    .detail-body ul { margin:0 0 24px 0; padding-left:0; list-style:none; }
+    .detail-body ul li { font-size:15px; color:#555; padding:8px 0 8px 20px; border-bottom:1px solid #F0EEEB; position:relative; }
+    .detail-body ul li::before { content:'—'; position:absolute; left:0; color:var(--yellow); font-weight:700; }
+    .detail-sidebar { position:sticky; top:100px; }
+    .sidebar-box { background:var(--light); padding:32px; margin-bottom:20px; }
+    .sidebar-box-title { font-family:'Ahamono',monospace; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--grey); margin-bottom:16px; }
+    .sidebar-box p { font-size:13px; color:#555; line-height:1.65; }
+    .sidebar-box .stat { font-size:32px; font-weight:900; color:var(--black); margin-bottom:4px; }
+    .sidebar-box .stat-label { font-size:12px; color:var(--grey); }
+    .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E8E8E8; }
+    .stat-block { background:var(--white); padding:24px; text-align:center; }
+    .stat-block .n { font-size:36px; font-weight:900; color:var(--black); line-height:1; }
+    .stat-block .l { font-size:12px; color:var(--grey); margin-top:6px; }
+
+    /* Process strip */
+    #svc-process { background:var(--black); padding:80px 0; }
+    .s-label { font-family:'Ahamono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--grey); margin-bottom:10px; }
+    .s-title { font-size:clamp(24px,2.8vw,38px); font-weight:900; margin-bottom:48px; }
+    .s-title.dark { color:var(--black); }
+    .s-title.white { color:var(--white); }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+    .step { border-top:2px solid rgba(255,255,255,0.12); padding-top:28px; }
+    .step-num { font-family:'Ahamono',monospace; font-size:11px; color:var(--yellow); letter-spacing:2px; margin-bottom:16px; }
+    .step-name { font-size:16px; font-weight:700; color:var(--white); margin-bottom:10px; }
+    .step-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+    /* Related */
+    #related { padding:80px 0; background:var(--light); }
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#D8D6D3; }
+    .related-card { background:var(--white); padding:32px 28px; transition:background 0.25s; text-decoration:none; color:inherit; display:block; }
+    .related-card:hover { background:var(--black); }
+    .related-card:hover .rc-name, .related-card:hover .rc-desc { color:var(--white); }
+    .related-card:hover .rc-arrow { color:var(--yellow); }
+    .rc-name { font-size:16px; font-weight:700; margin-bottom:10px; color:var(--black); transition:color 0.25s; line-height:1.35; }
+    .rc-desc { font-size:13px; color:var(--grey); line-height:1.55; transition:color 0.25s; }
+    .rc-arrow { font-size:16px; color:var(--grey); margin-top:16px; display:block; transition:color 0.25s; }
+
+    /* CTA */
+    #contact-cta { background:var(--yellow); padding:96px 0; }
+    .contact-cta-inner { display:flex; align-items:center; justify-content:space-between; gap:48px; flex-wrap:wrap; }
+    .contact-cta-text h2 { font-size:clamp(24px,3vw,40px); font-weight:900; color:var(--black); margin-bottom:12px; }
+    .contact-cta-text p { font-size:16px; color:var(--black); opacity:0.65; max-width:440px; line-height:1.6; }
+    .btn-dark { display:inline-block; background:var(--black); color:var(--white); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:16px 34px; transition:opacity 0.2s; }
+    .btn-dark:hover { opacity:0.8; }
+
+    footer { background:var(--black); padding:56px 0 32px; }
+    .footer-grid { display:grid; grid-template-columns:200px 1fr 1fr; gap:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.07); }
+    .footer-logo img { height:26px; margin-bottom:16px; }
+    .footer-tagline { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.6; }
+    .footer-col-title { font-family:'Ahamono',monospace; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:16px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:10px; }
+    .footer-col a { font-size:13px; color:rgba(255,255,255,0.55); transition:color 0.2s; }
+    .footer-col a:hover { color:var(--white); }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; flex-wrap:wrap; gap:12px; }
+    .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); font-family:'Ahamono',monospace; }
+
+    @media (max-width:960px) {
+      .nav-links, .nav-cta { display:none; }
+      .hamburger { display:flex; }
+      .detail-grid { grid-template-columns:1fr; }
+      .detail-sidebar { position:static; }
+      .process-steps { grid-template-columns:repeat(2,1fr); }
+      .related-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid > :first-child { grid-column:1/-1; }
+    }
+    @media (max-width:560px) {
+      .process-steps { grid-template-columns:1fr; }
+      .related-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .contact-cta-inner { flex-direction:column; align-items:flex-start; }
+      .stats-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about" data-t="nav_about">Apie mus</a></li>
+      <li><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos</a></li>
+      <li><a href="index.html#work" data-t="nav_work">Atlikti darbai</a></li>
+      <li><a href="index.html#audio" data-t="nav_voices">Balsai</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="lt" onclick="setLang('lt')">LT</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#contact" class="nav-cta" data-t="nav_cta">Susisiekti</a>
+    </div>
+    <button class="hamburger" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="index.html#about" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
+    <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li><a href="index.html#work" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
+    <li><a href="index.html#contact" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="daw-bg" id="dawBg"></div>
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">DROPAUDIO</a><span>›</span><a href="paslaugos.html" data-t="nav_services">Paslaugos</a><span>›</span><span data-t="svc_name">TV ir radijo reklamos įgarsinimas</span></div>
+    <span class="page-label">01</span>
+    <h1 class="page-h1" data-t="h1">TV ir radijo reklamos įgarsinimas</h1>
+    <p class="page-sub" data-t="h1_sub">Casting, įrašymas, post-produkcija — broadcast-ready failo pristatymas be papildomų žingsnių. Lietuviškai, latviškai, estiškai.</p>
+    <a href="index.html#contact" class="btn-yellow" data-t="hero_cta">Aptarti projektą</a>
+  </div>
+</section>
+
+<section id="service-detail">
+  <div class="container">
+    <div class="detail-grid">
+      <div class="detail-body">
+        <h2 data-t="body_h2">Visas ciklas po vienu stogu</h2>
+        <p data-t="body_p1">Dauguma studijų priima scenarijų ir grąžina WAV failą. Mes dirbame kitaip: įsigilinome į projektą, tvarkome balsų casting'ą, redaguojame scenarijų jei reikia, režisuojame įrašą ir pristatome broadcast-ready failą, kuris tiesiog veikia.</p>
+        <p data-t="body_p2">17 metų patirties reiškia, kad žinome, ko tikisi transliacijos redakcija, ką vertina agentūros ir kaip atrodo projektas, kai klientas pirmą kartą bando dirbti su Baltijos rinka. Mes eliminuojame tuos nemalonius netikėtumus.</p>
+
+        <h2 data-t="body_h2b">Ko galite tikėtis</h2>
+        <ul>
+          <li data-t="li_1">Balsų atranka iš 700+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų</li>
+          <li data-t="li_2">Scenarijaus redakcija — patikrinimas, ar tekstas skamba natūraliai ir tinka ekranui</li>
+          <li data-t="li_3">Įrašymas ProTools studijoje Vilniuje arba per SourceConnect</li>
+          <li data-t="li_4">Muzikos ir garso efektų sinchronizacija ir miksas</li>
+          <li data-t="li_5">Broadcast-ready pristatymas pagal kliento spec: LuFS, formatas, metaduomenys</li>
+          <li data-t="li_6">Greiti terminai — standartinis projektas: 24–48 valandos</li>
+        </ul>
+
+        <h2 data-t="body_h2c">Baltijos rinka — vienas kontaktas</h2>
+        <p data-t="body_p3">Jei kampanija eina į Lietuvą, Latviją ir Estiją — nereikia ieškoti trijų skirtingų studijų. Mūsų duomenų bazėje yra balsų visoms trims kalboms, procesas tas pats, atsakomybė ta pati. Vienas projekto vadovas, vienas pristatymo terminas.</p>
+
+        <div class="stats-row" style="margin-top:40px">
+          <div class="stat-block">
+            <div class="n">700+</div>
+            <div class="l" data-t="stat_1">Balsų duomenų bazė</div>
+          </div>
+          <div class="stat-block">
+            <div class="n">17</div>
+            <div class="l" data-t="stat_2">Metų patirtis</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-box-title" data-t="sb1_title">Tinka</div>
+          <ul style="list-style:none;padding:0">
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_1">TV reklamos (TVC, online video)</li>
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_2">Radijo reklamos ir jingle'ai</li>
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_3">Baltijos rinkos lokalizacija</li>
+            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_4">Skaitmeninės reklamos, YouTube prerolls</li>
+            <li style="font-size:13px;color:#555;padding:7px 0" data-t="fit_5">Agentūrų ir in-house komandų projektai</li>
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-box-title" data-t="sb2_title">Klientai</div>
+          <p data-t="sb2_body">DDB, TBWA, McCann, Coca-Cola, IKEA, Vinted, Ignitis, P&G, Colgate-Palmolive, airBaltic ir kt.</p>
+        </div>
+        <div style="margin-top:20px">
+          <a href="index.html#contact" class="btn-yellow" style="display:block;text-align:center" data-t="hero_cta">Aptarti projektą</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="svc-process">
+  <div class="container">
+    <div class="s-label" style="color:rgba(255,255,255,0.35)">PROCESAS</div>
+    <h2 class="s-title white" data-t="proc_title">Nuo užklausos iki transliacijos</h2>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">01</div><div class="step-name" data-t="p1n">Briefas</div><div class="step-desc" data-t="p1d">Scenarijus, terminas, kalbos, formatai. Vienas trumpas pokalbis arba el. laiškas.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-name" data-t="p2n">Casting</div><div class="step-desc" data-t="p2d">Parenkame 3–5 tinkamiausius balsus. Klientas renkasi arba gauname demo įrašus.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-name" data-t="p3n">Įrašymas</div><div class="step-desc" data-t="p3d">ProTools studijoje su gyvai stebinčiu klientu arba per SourceConnect. Sesiją vedame mes.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-name" data-t="p4n">Pristatymas</div><div class="step-desc" data-t="p4d">Broadcast-ready failas pagal spec. Pirmasis pristatymas yra galutinis — taip dirbame.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="related">
+  <div class="container">
+    <div class="s-label">KITOS PASLAUGOS</div>
+    <h2 class="s-title dark" data-t="rel_title">Taip pat galime padėti</h2>
+    <div class="related-grid">
+      <a href="garso-adaptacija.html" class="related-card">
+        <div class="rc-name" data-t="rel_1_n">Garso adaptacija ir lokalizacija</div>
+        <div class="rc-desc" data-t="rel_1_d">Visas tarptautinės kampanijos pritaikymas Baltijos rinkai</div>
+        <span class="rc-arrow">→</span>
+      </a>
+      <a href="audio-reklamos.html" class="related-card">
+        <div class="rc-name" data-t="rel_2_n">Audio reklamos gamyba</div>
+        <div class="rc-desc" data-t="rel_2_d">Radijo reklama nuo scenarijaus iki galutinio failo</div>
+        <span class="rc-arrow">→</span>
+      </a>
+      <a href="muzikos-kuryba.html" class="related-card">
+        <div class="rc-name" data-t="rel_3_n">Originalios muzikos kūryba</div>
+        <div class="rc-desc" data-t="rel_3_d">Jingle'ai ir teminės melodijos prekės ženklams</div>
+        <span class="rc-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact-cta">
+  <div class="container">
+    <div class="contact-cta-inner">
+      <div class="contact-cta-text">
+        <h2 data-t="cta_h">Turite projektą?</h2>
+        <p data-t="cta_p">Pasidalinkite scenarijumi ir terminais — įvertinsime per dieną.</p>
+      </div>
+      <a href="mailto:hello@dropaudio.lt" class="btn-dark" data-t="cta_btn">Rašyti mums</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></div>
+        <div class="footer-tagline">Baltic audio. Zero surprises.</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_svc">Paslaugos</div>
+        <ul>
+          <li><a href="tv-reklamos.html" data-t="svc_name">TV ir radijo reklamos</a></li>
+          <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+          <li><a href="muzikos-kuryba.html">Muzikos kūryba</a></li>
+          <li><a href="animacijos-igarsinimas.html">Animacijos įgarsinimas</a></li>
+          <li><a href="garso-adaptacija.html">Garso lokalizacija</a></li>
+          <li><a href="ivr.html">IVR ir autoatsakikliai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_contact">Kontaktai</div>
+        <ul>
+          <li><a href="mailto:hello@dropaudio.lt">hello@dropaudio.lt</a></li>
+          <li><a href="tel:+37061069726">+370 610 69 726</a></li>
+          <li><a href="apie.html" data-t="nav_about">Apie mus</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 DROPAUDIO. Vilnius, Lithuania.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {
+  lt: {
+    nav_about:'Apie mus', nav_services:'Paslaugos', nav_work:'Atlikti darbai', nav_voices:'Balsai', nav_cta:'Susisiekti',
+    svc_name:'TV ir radijo reklamos įgarsinimas',
+    h1:'TV ir radijo reklamos įgarsinimas',
+    h1_sub:'Casting, įrašymas, post-produkcija — broadcast-ready failo pristatymas be papildomų žingsnių. Lietuviškai, latviškai, estiškai.',
+    hero_cta:'Aptarti projektą',
+    body_h2:'Visas ciklas po vienu stogu',
+    body_p1:'Dauguma studijų priima scenarijų ir grąžina WAV failą. Mes dirbame kitaip: įsigilinome į projektą, tvarkome balsų casting\'ą, redaguojame scenarijų jei reikia, režisuojame įrašą ir pristatome broadcast-ready failą, kuris tiesiog veikia.',
+    body_p2:'17 metų patirties reiškia, kad žinome, ko tikisi transliacijos redakcija, ką vertina agentūros ir kaip atrodo projektas, kai klientas pirmą kartą bando dirbti su Baltijos rinka. Mes eliminuojame tuos nemalonius netikėtumus.',
+    body_h2b:'Ko galite tikėtis',
+    li_1:'Balsų atranka iš 700+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų',
+    li_2:'Scenarijaus redakcija — patikrinimas, ar tekstas skamba natūraliai ir tinka ekranui',
+    li_3:'Įrašymas ProTools studijoje Vilniuje arba per SourceConnect',
+    li_4:'Muzikos ir garso efektų sinchronizacija ir miksas',
+    li_5:'Broadcast-ready pristatymas pagal kliento spec: LuFS, formatas, metaduomenys',
+    li_6:'Greiti terminai — standartinis projektas: 24–48 valandos',
+    body_h2c:'Baltijos rinka — vienas kontaktas',
+    body_p3:'Jei kampanija eina į Lietuvą, Latviją ir Estiją — nereikia ieškoti trijų skirtingų studijų. Mūsų duomenų bazėje yra balsų visoms trims kalboms, procesas tas pats, atsakomybė ta pati. Vienas projekto vadovas, vienas pristatymo terminas.',
+    stat_1:'Balsų duomenų bazė', stat_2:'Metų patirtis',
+    sb1_title:'Tinka', sb2_title:'Klientai',
+    fit_1:'TV reklamos (TVC, online video)', fit_2:'Radijo reklamos ir jingle\'ai', fit_3:'Baltijos rinkos lokalizacija', fit_4:'Skaitmeninės reklamos, YouTube prerolls', fit_5:'Agentūrų ir in-house komandų projektai',
+    sb2_body:'DDB, TBWA, McCann, Coca-Cola, IKEA, Vinted, Ignitis, P&G, Colgate-Palmolive, airBaltic ir kt.',
+    proc_title:'Nuo užklausos iki transliacijos',
+    p1n:'Briefas', p1d:'Scenarijus, terminas, kalbos, formatai. Vienas trumpas pokalbis arba el. laiškas.',
+    p2n:'Casting', p2d:'Parenkame 3–5 tinkamiausius balsus. Klientas renkasi arba gauname demo įrašus.',
+    p3n:'Įrašymas', p3d:'ProTools studijoje su gyvai stebinčiu klientu arba per SourceConnect. Sesiją vedame mes.',
+    p4n:'Pristatymas', p4d:'Broadcast-ready failas pagal spec. Pirmasis pristatymas yra galutinis — taip dirbame.',
+    rel_title:'Taip pat galime padėti',
+    rel_1_n:'Garso adaptacija ir lokalizacija', rel_1_d:'Visas tarptautinės kampanijos pritaikymas Baltijos rinkai',
+    rel_2_n:'Audio reklamos gamyba', rel_2_d:'Radijo reklama nuo scenarijaus iki galutinio failo',
+    rel_3_n:'Originalios muzikos kūryba', rel_3_d:'Jingle\'ai ir teminės melodijos prekės ženklams',
+    cta_h:'Turite projektą?', cta_p:'Pasidalinkite scenarijumi ir terminais — įvertinsime per dieną.',
+    cta_btn:'Rašyti mums', fc_svc:'Paslaugos', fc_contact:'Kontaktai'
+  },
+  en: {
+    nav_about:'About us', nav_services:'Services', nav_work:'Work', nav_voices:'Voices', nav_cta:'Contact',
+    svc_name:'TV & radio commercial voiceover',
+    h1:'TV & radio commercial voiceover',
+    h1_sub:'Casting, recording, post-production — broadcast-ready delivery with no extra steps. Lithuanian, Latvian, Estonian.',
+    hero_cta:'Discuss your project',
+    body_h2:'The full cycle under one roof',
+    body_p1:'Most studios take a script and return a WAV file. We work differently: we get inside the project, handle voice casting, adapt the script if needed, direct the session, and deliver a broadcast-ready file that simply works.',
+    body_p2:'17 years of experience means we know what broadcast editors expect, what agencies value, and how a project looks when a client is working with the Baltic market for the first time. We eliminate the unpleasant surprises.',
+    body_h2b:'What you can expect',
+    li_1:'Voice casting from 700+ Lithuanian, Latvian, Estonian, English and other language talents',
+    li_2:'Script review — checking that the text sounds natural and works on screen',
+    li_3:'Recording in our ProTools studio in Vilnius or via SourceConnect',
+    li_4:'Music and sound effect synchronisation and mix',
+    li_5:'Broadcast-ready delivery to spec: LuFS, format, metadata',
+    li_6:'Fast turnaround — standard project: 24–48 hours',
+    body_h2c:'The Baltic market — one contact',
+    body_p3:'If the campaign goes to Lithuania, Latvia, and Estonia — there\'s no need to find three separate studios. Our database has voices for all three languages, the process is the same, the responsibility is the same. One project manager, one delivery deadline.',
+    stat_1:'Voice database', stat_2:'Years of experience',
+    sb1_title:'Suitable for', sb2_title:'Clients',
+    fit_1:'TV commercials (TVC, online video)', fit_2:'Radio commercials and jingles', fit_3:'Baltic market localization', fit_4:'Digital ads, YouTube pre-rolls', fit_5:'Agency and in-house team projects',
+    sb2_body:'DDB, TBWA, McCann, Coca-Cola, IKEA, Vinted, Ignitis, P&G, Colgate-Palmolive, airBaltic and more.',
+    proc_title:'From brief to broadcast',
+    p1n:'Brief', p1d:'Script, deadline, languages, formats. One short call or email.',
+    p2n:'Casting', p2d:'We shortlist 3–5 best-fit voices. Client selects or we provide demo recordings.',
+    p3n:'Recording', p3d:'In our ProTools studio with live client presence or via SourceConnect. We run the session.',
+    p4n:'Delivery', p4d:'Broadcast-ready file to spec. The first delivery is the final one — that\'s how we work.',
+    rel_title:'We can also help with',
+    rel_1_n:'Audio adaptation & localization', rel_1_d:'Full adaptation of international campaigns for the Baltic market',
+    rel_2_n:'Audio advertising production', rel_2_d:'Radio commercials from script to final file',
+    rel_3_n:'Original music composition', rel_3_d:'Jingles and brand themes',
+    cta_h:'Have a project?', cta_p:'Share your script and timeline — we\'ll assess it within a day.',
+    cta_btn:'Write to us', fc_svc:'Services', fc_contact:'Contact'
+  }
+};
+
+let lang = 'lt';
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('[data-t]').forEach(el => { const k=el.dataset.t; if(T[l][k]!==undefined) el.innerHTML=T[l][k]; });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.documentElement.lang=l;
+  document.getElementById('page-title').textContent = l==='lt' ? 'TV ir radijo reklamos įgarsinimas — DROPAUDIO' : 'TV & Radio Commercial Voiceover — DROPAUDIO';
+  document.getElementById('page-desc').setAttribute('content', l==='lt'
+    ? 'Profesionalus TV ir radijo reklamos įgarsinimas Vilniuje. Balsų atranka, įrašymas, miksas — broadcast-ready.'
+    : 'Professional TV and radio commercial voiceover in Vilnius. Voice casting, recording, mix — broadcast-ready. Lithuanian, Latvian, Estonian.');
+}
+function toggleNav(){document.getElementById('drawer').classList.toggle('open');}
+function closeNav(){document.getElementById('drawer').classList.remove('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10));
+(function buildDaw(){const c=document.getElementById('dawBg'),w=[60,110,80,140,55,95,70,120];for(let i=0;i<8;i++){const r=document.createElement('div');r.className='daw-row';const n=3+(i%3);for(let j=0;j<n;j++){const t=document.createElement('div');t.className='daw-track';t.style.width=w[(i*n+j)%w.length]+'px';r.appendChild(t);}c.appendChild(r);}})();
+</script>
+</body>
+</html>

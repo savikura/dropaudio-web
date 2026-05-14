@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Apie DROPAUDIO — Garso įrašų studija Vilniuje</title>
+  <meta name="description" id="page-desc" content="DROPAUDIO — Vilniaus garso įrašų studija nuo 2007 m. 700+ balsų, du ProTools aparatai, SourceConnect. Baltijos rinkos audio ekspertai.">
+  <style>
+    @font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Black.otf')format('opentype');font-weight:900}@font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Bold.otf')format('opentype');font-weight:700}@font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Medium.otf')format('opentype');font-weight:500}@font-face{font-family:'Geomanist';src:url('fonts/Geomanist-Regular.otf')format('opentype');font-weight:400}@font-face{font-family:'Ahamono';src:url('fonts/Ahamono-Regular.otf')format('opentype');font-weight:400}
+    :root{--black:#231F20;--yellow:#EEDF15;--grey:#A7A9AB;--light:#F0EEEB;--white:#FFFFFF;--max:1200px;--pad:clamp(24px,4vw,64px)}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Geomanist','Helvetica Neue',Arial,sans-serif;font-weight:400;color:var(--black);background:var(--white)}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}p{line-height:1.7}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--black);transition:box-shadow .3s}nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,.07)}.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}.nav-logo img{height:30px}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.3px;transition:color .2s}.nav-links a:hover{color:#fff}.nav-links a.active{color:var(--yellow)}.nav-right{display:flex;align-items:center;gap:20px}.lang-sw{display:flex;gap:2px}.lang-btn{background:none;border:none;cursor:pointer;font-family:'Ahamono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);padding:5px 9px;border-radius:2px;transition:color .2s}.lang-btn:hover{color:rgba(255,255,255,.7)}.lang-btn.active{color:var(--yellow)}.nav-cta{background:var(--yellow);color:var(--black);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;transition:opacity .2s}.nav-cta:hover{opacity:.85}.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}.hamburger span{width:22px;height:2px;background:var(--white);display:block}.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;z-index:190;background:var(--black);padding:24px var(--pad) 32px;border-top:1px solid rgba(255,255,255,.07)}.nav-drawer.open{display:block}.nav-drawer ul{list-style:none}.nav-drawer li{border-bottom:1px solid rgba(255,255,255,.07)}.nav-drawer a{display:block;font-size:15px;font-weight:500;color:rgba(255,255,255,.8);padding:14px 0}
+    .page-hero{background:var(--black);padding:144px 0 80px;position:relative;overflow:hidden}.daw-bg{position:absolute;inset:0;pointer-events:none;opacity:.05;display:flex;flex-direction:column;justify-content:center;padding:40px var(--pad);gap:10px}.daw-row{display:flex;gap:8px;align-items:center}.daw-track{height:12px;background:var(--white);border-radius:2px}.page-hero .container{position:relative;z-index:2}.page-label{font-family:'Ahamono',monospace;font-size:11px;color:var(--yellow);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:block}.page-h1{font-size:clamp(30px,4vw,54px);font-weight:900;color:var(--white);line-height:1.05;margin-bottom:20px;max-width:680px}.page-sub{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.6);line-height:1.65;max-width:560px}
+    /* Stats bar */
+    #stats{background:var(--yellow);padding:56px 0}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,.1)}.stat-item{background:var(--yellow);padding:28px 24px;text-align:center}.stat-n{font-size:clamp(32px,3.5vw,48px);font-weight:900;color:var(--black);line-height:1}.stat-l{font-size:12px;color:rgba(0,0,0,.55);margin-top:8px;letter-spacing:.3px}
+    /* Story */
+    #story{padding:96px 0;background:var(--white)}.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}.story-text h2{font-size:clamp(24px,2.8vw,38px);font-weight:900;margin-bottom:24px;color:var(--black)}.story-text p{font-size:15px;color:#555;margin-bottom:20px}.story-text p:last-child{margin-bottom:0}.story-img{background:var(--light);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--grey);font-family:'Ahamono',monospace;font-size:11px;letter-spacing:2px}
+    /* Values */
+    #values{background:var(--black);padding:96px 0}.s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:10px}.s-title{font-size:clamp(24px,2.8vw,38px);font-weight:900;margin-bottom:48px}.s-title.dark{color:var(--black)}.s-title.white{color:var(--white)}.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.08)}.value-card{background:var(--black);padding:36px 32px}.value-num{font-family:'Ahamono',monospace;font-size:11px;color:var(--yellow);letter-spacing:2px;margin-bottom:20px}.value-title{font-size:18px;font-weight:700;color:var(--white);margin-bottom:14px}.value-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65}
+    /* Team */
+    #team{padding:96px 0;background:var(--light)}.team-intro{font-size:16px;color:#555;line-height:1.7;max-width:580px;margin-bottom:56px}.team-card{background:var(--white);padding:32px}.team-card-name{font-size:18px;font-weight:700;margin-bottom:4px}.team-card-role{font-family:'Ahamono',monospace;font-size:11px;color:var(--yellow);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}.team-card-bio{font-size:13px;color:#555;line-height:1.65}
+    /* Clients */
+    #clients-full{background:var(--white);padding:80px 0}.clients-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}.client-tag{font-family:'Ahamono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);border:1px solid #D0CECC;padding:8px 16px}
+    /* CTA */
+    #contact-cta{background:var(--yellow);padding:96px 0}.contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}.contact-cta-text h2{font-size:clamp(24px,3vw,40px);font-weight:900;color:var(--black);margin-bottom:12px}.contact-cta-text p{font-size:16px;color:var(--black);opacity:.65;max-width:440px;line-height:1.6}.btn-dark{display:inline-block;background:var(--black);color:var(--white);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:16px 34px;transition:opacity .2s}.btn-dark:hover{opacity:.8}
+    footer{background:var(--black);padding:56px 0 32px}.footer-grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}.footer-logo img{height:26px;margin-bottom:16px}.footer-tagline{font-size:12px;color:rgba(255,255,255,.35);line-height:1.6}.footer-col-title{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}.footer-col ul{list-style:none}.footer-col li{margin-bottom:10px}.footer-col a{font-size:13px;color:rgba(255,255,255,.55);transition:color .2s}.footer-col a:hover{color:var(--white)}.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px}.footer-copy{font-size:11px;color:rgba(255,255,255,.2);font-family:'Ahamono',monospace}
+    @media(max-width:960px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.stats-grid{grid-template-columns:repeat(2,1fr)}.story-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>:first-child{grid-column:1/-1}}
+    @media(max-width:560px){.stats-grid,.values-grid,.footer-grid{grid-template-columns:1fr}.contact-cta-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></a>
+    <ul class="nav-links">
+      <li><a href="apie.html" class="active" data-t="nav_about">Apie mus</a></li>
+      <li><a href="paslaugos.html" data-t="nav_services">Paslaugos</a></li>
+      <li><a href="index.html#work" data-t="nav_work">Atlikti darbai</a></li>
+      <li><a href="index.html#audio" data-t="nav_voices">Balsai</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="lt" onclick="setLang('lt')">LT</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#contact" class="nav-cta" data-t="nav_cta">Susisiekti</a>
+    </div>
+    <button class="hamburger" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="apie.html" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
+    <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li><a href="index.html#work" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
+    <li><a href="index.html#contact" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="daw-bg" id="dawBg"></div>
+  <div class="container">
+    <span class="page-label">DROPAUDIO</span>
+    <h1 class="page-h1" data-t="h1">Garso studija, kuri dirba kaip partneris</h1>
+    <p class="page-sub" data-t="h1_sub">Nuo 2007 m. dirbame su tarptautiniais prekės ženklais ir agentūromis. Mūsų principas paprastas: audio projektas pristatomas tiksliai, laiku, be nemalonių netikėtumų.</p>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-n">17+</div><div class="stat-l" data-t="st_1">Metų rinkoje</div></div>
+      <div class="stat-item"><div class="stat-n">700+</div><div class="stat-l" data-t="st_2">Balsų talentų</div></div>
+      <div class="stat-item"><div class="stat-n">166+</div><div class="stat-l" data-t="st_3">Tarptautiniai klientai</div></div>
+      <div class="stat-item"><div class="stat-n">3</div><div class="stat-l" data-t="st_4">Baltijos kalbos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <h2 data-t="story_h2">Kaip tai prasidėjo</h2>
+        <p data-t="story_p1">DROPAUDIO įkurta 2007 m. Vilniuje — tuo metu, kai audio lokalizacija Baltijos šalims vis dar reiškė skirtingų studiją kiekvienoje šalyje, ilgus koordinavimo procesus ir dažnai — nekokybišką galutinį produktą.</p>
+        <p data-t="story_p2">Mes pasirinkome kitą kelią: vieną kontaktą, vieną procesą, visas tris kalbas. Sukūrėme balsų duomenų bazę, investavome į ProTools infrastruktūrą su SourceConnect ir pradėjome dirbti kaip tikras audio partneris — ne tik kaip techninė studija.</p>
+        <p data-t="story_p3">Šiandien mūsų klientai yra tarptautinės agentūros — DDB, TBWA, McCann — ir globalūs prekės ženklai, kuriems Baltijos rinka nėra tolima užduotis, o svarbi jos dalis. Mūsų darbas — užtikrinti, kad garso kokybė nebuvo tas dalykas, dėl kurio reikėjo nerimauti.</p>
+      </div>
+      <div class="story-img">
+        <span>Studio photo placeholder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="container">
+    <div class="s-label" style="color:rgba(255,255,255,.35)">PRINCIPAI</div>
+    <h2 class="s-title white" data-t="val_title">Kaip mes dirbame</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div class="value-title" data-t="v1_t">Zero surprises</div>
+        <div class="value-desc" data-t="v1_d">Pristatome tai, ką pažadėjome. Broadcast-ready failas, tinkamas spec, laiku. Nėra papildomų etapų, kurie nebuvo aptarti.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div class="value-title" data-t="v2_t">Vadybos kokybė</div>
+        <div class="value-desc" data-t="v2_d">Dedikuotas projekto vadovas nuo pirmos minutės. Klientas neturi sekti proceso — mes informuojame, kai reikia.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div class="value-title" data-t="v3_t">Visi trys Baltijos</div>
+        <div class="value-desc" data-t="v3_d">Vienas kontaktas visoms trims kalboms. Ne logistinė problema — standartinis mūsų darbas.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <div class="value-title" data-t="v4_t">17 metų praktika</div>
+        <div class="value-desc" data-t="v4_d">Žinome, ko tikisi transliacijos redakcija. Žinome, kuo skiriasi lokalinės rinkos. Žinome, kaip atrodo gerai padarytas projektas.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">05</div>
+        <div class="value-title" data-t="v5_t">ProTools + SourceConnect</div>
+        <div class="value-desc" data-t="v5_d">Dvi studijos, profesionali infrastruktūra, realaus laiko ryšys su tarptautiniais klientais. Galime dirbti su jumis sinchroniškai.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">06</div>
+        <div class="value-title" data-t="v6_t">Pirmo karto kokybė</div>
+        <div class="value-desc" data-t="v6_d">Kiekvienam projektui ruošiamės taip, lyg pataisymų nebus. Dažniausiai — jų ir nereikia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="s-label">KOMANDA</div>
+    <h2 class="s-title dark" data-t="team_title">Kas dirba</h2>
+    <p class="team-intro" data-t="team_intro">Nedidelė, bet giliai specializuota komanda. Kiekvienas turi konkrečią sritį — ir dirba kaip ekspertas, ne kaip visuomeniškas generalistos.</p>
+    <div class="team-card" style="max-width:480px">
+      <div class="team-card-name">Vidmantas Girskas</div>
+      <div class="team-card-role" data-t="team_role">Managing Director</div>
+      <div class="team-card-bio" data-t="team_bio">17 metų audio produkcijos ir klientų vadybos patirtis. Specializacija — tarptautinių projektų koordinavimas, rinkos strategija, klientų rizikų valdymas. Muzikantas ir garso dizaineris.</div>
+    </div>
+  </div>
+</section>
+
+<section id="clients-full">
+  <div class="container">
+    <div class="s-label">KLIENTAI</div>
+    <h2 class="s-title dark" data-t="cl_title">Kas mums pasitiki</h2>
+    <div class="clients-list">
+      <span class="client-tag">Coca-Cola</span><span class="client-tag">IKEA</span><span class="client-tag">Vinted</span><span class="client-tag">Ignitis</span><span class="client-tag">P&amp;G</span><span class="client-tag">Colgate-Palmolive</span><span class="client-tag">BMW</span><span class="client-tag">Western Union</span><span class="client-tag">Discovery Channel</span><span class="client-tag">DDB</span><span class="client-tag">TBWA</span><span class="client-tag">McCann Erickson</span><span class="client-tag">airBaltic</span><span class="client-tag">Vaikų linija</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact-cta">
+  <div class="container">
+    <div class="contact-cta-inner">
+      <div class="contact-cta-text">
+        <h2 data-t="cta_h">Dirbkime kartu</h2>
+        <p data-t="cta_p">Papasakokite apie projektą — įvertinsime ir pasiūlysime sprendimą. Be įsipareigojimų.</p>
+      </div>
+      <a href="mailto:hello@dropaudio.lt" class="btn-dark" data-t="cta_btn">Rašyti mums</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></div><div class="footer-tagline">Baltic audio. Zero surprises.</div></div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_svc">Paslaugos</div>
+        <ul>
+          <li><a href="tv-reklamos.html">TV ir radijo reklamos</a></li>
+          <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+          <li><a href="muzikos-kuryba.html">Muzikos kūryba</a></li>
+          <li><a href="animacijos-igarsinimas.html">Animacijos įgarsinimas</a></li>
+          <li><a href="garso-adaptacija.html">Garso lokalizacija</a></li>
+          <li><a href="ivr.html">IVR ir autoatsakikliai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-t="fc_contact">Kontaktai</div>
+        <ul>
+          <li><a href="mailto:hello@dropaudio.lt">hello@dropaudio.lt</a></li>
+          <li><a href="tel:+37061069726">+370 610 69 726</a></li>
+          <li><a href="apie.html" data-t="nav_about">Apie mus</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 DROPAUDIO. Vilnius, Lithuania.</span></div>
+  </div>
+</footer>
+<script>
+const T={lt:{nav_about:'Apie mus',nav_services:'Paslaugos',nav_work:'Atlikti darbai',nav_voices:'Balsai',nav_cta:'Susisiekti',h1:'Garso studija, kuri dirba kaip partneris',h1_sub:'Nuo 2007 m. dirbame su tarptautiniais prekės ženklais ir agentūromis. Mūsų principas paprastas: audio projektas pristatomas tiksliai, laiku, be nemalonių netikėtumų.',st_1:'Metų rinkoje',st_2:'Balsų talentų',st_3:'Tarptautiniai klientai',st_4:'Baltijos kalbos',story_h2:'Kaip tai prasidėjo',story_p1:'DROPAUDIO įkurta 2007 m. Vilniuje — tuo metu, kai audio lokalizacija Baltijos šalims vis dar reiškė skirtingų studiją kiekvienoje šalyje, ilgus koordinavimo procesus ir dažnai — nekokybišką galutinį produktą.',story_p2:'Mes pasirinkome kitą kelią: vieną kontaktą, vieną procesą, visas tris kalbas. Sukūrėme balsų duomenų bazę, investavome į ProTools infrastruktūrą su SourceConnect ir pradėjome dirbti kaip tikras audio partneris.',story_p3:'Šiandien mūsų klientai yra tarptautinės agentūros — DDB, TBWA, McCann — ir globalūs prekės ženklai, kuriems Baltijos rinka nėra tolima užduotis, o svarbi jos dalis.',val_title:'Kaip mes dirbame',v1_t:'Zero surprises',v1_d:'Pristatome tai, ką pažadėjome. Broadcast-ready failas, tinkamas spec, laiku.',v2_t:'Vadybos kokybė',v2_d:'Dedikuotas projekto vadovas nuo pirmos minutės. Klientas neturi sekti proceso.',v3_t:'Visi trys Baltijos',v3_d:'Vienas kontaktas visoms trims kalboms. Ne logistinė problema — standartinis mūsų darbas.',v4_t:'17 metų praktika',v4_d:'Žinome, ko tikisi transliacijos redakcija. Žinome, kuo skiriasi lokalinės rinkos.',v5_t:'ProTools + SourceConnect',v5_d:'Dvi studijos, profesionali infrastruktūra, realaus laiko ryšys su tarptautiniais klientais.',v6_t:'Pirmo karto kokybė',v6_d:'Kiekvienam projektui ruošiamės taip, lyg pataisymų nebus. Dažniausiai — jų ir nereikia.',team_title:'Kas dirba',team_intro:'Nedidelė, bet giliai specializuota komanda. Kiekvienas turi konkrečią sritį — ir dirba kaip ekspertas.',team_role:'Managing Director',team_bio:'17 metų audio produkcijos ir klientų vadybos patirtis. Specializacija — tarptautinių projektų koordinavimas, rinkos strategija. Muzikantas ir garso dizaineris.',cl_title:'Kas mums pasitiki',cta_h:'Dirbkime kartu',cta_p:'Papasakokite apie projektą — įvertinsime ir pasiūlysime sprendimą. Be įsipareigojimų.',cta_btn:'Rašyti mums',fc_svc:'Paslaugos',fc_contact:'Kontaktai'},en:{nav_about:'About us',nav_services:'Services',nav_work:'Work',nav_voices:'Voices',nav_cta:'Contact',h1:'An audio studio that works like a partner',h1_sub:'Since 2007 we\'ve worked with international brands and agencies. Our principle is simple: an audio project is delivered accurately, on time, with no unpleasant surprises.',st_1:'Years in business',st_2:'Voice talents',st_3:'International clients',st_4:'Baltic languages',story_h2:'How it started',story_p1:'DROPAUDIO was founded in 2007 in Vilnius — at a time when audio localisation for the Baltic states still meant different studios in each country, long coordination processes, and often — poor-quality final output.',story_p2:'We chose a different path: one contact, one process, all three languages. We built a voice database, invested in ProTools infrastructure with SourceConnect, and started working as a true audio partner — not just a technical studio.',story_p3:'Today our clients are international agencies — DDB, TBWA, McCann — and global brands for whom the Baltic market is not a distant task, but an important part of their business.',val_title:'How we work',v1_t:'Zero surprises',v1_d:'We deliver what we promised. Broadcast-ready file, right spec, on time.',v2_t:'Management quality',v2_d:'A dedicated project manager from the first minute. The client doesn\'t need to track the process.',v3_t:'All three Baltics',v3_d:'One contact for all three languages. Not a logistical problem — our standard work.',v4_t:'17 years of practice',v4_d:'We know what broadcast editors expect. We know how local markets differ.',v5_t:'ProTools + SourceConnect',v5_d:'Two studios, professional infrastructure, real-time connection with international clients.',v6_t:'First-take quality',v6_d:'We prepare for every project as if revisions won\'t happen. Usually — they don\'t.',team_title:'Who works here',team_intro:'A small, but deeply specialised team. Everyone has a specific domain — and works as an expert, not a generalist.',team_role:'Managing Director',team_bio:'17 years of audio production and client management experience. Specialisation — international project coordination, market strategy. Musician and sound designer.',cl_title:'Who trusts us',cta_h:'Let\'s work together',cta_p:'Tell us about your project — we\'ll assess it and propose a solution. No commitment required.',cta_btn:'Write to us',fc_svc:'Services',fc_contact:'Contact'}};
+let lang='lt';
+function setLang(l){lang=l;document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(T[l][k]!==undefined)el.innerHTML=T[l][k];});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.documentElement.lang=l;document.getElementById('page-title').textContent=l==='lt'?'Apie DROPAUDIO — Garso įrašų studija Vilniuje':'About DROPAUDIO — Audio Studio in Vilnius';document.getElementById('page-desc').setAttribute('content',l==='lt'?'DROPAUDIO — Vilniaus garso įrašų studija nuo 2007 m. 700+ balsų, du ProTools aparatai, SourceConnect.':'DROPAUDIO — Vilnius audio studio since 2007. 700+ voices, two ProTools studios, SourceConnect. Baltic market audio experts.');}
+function toggleNav(){document.getElementById('drawer').classList.toggle('open');}
+function closeNav(){document.getElementById('drawer').classList.remove('open');}
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10));
+(function buildDaw(){const c=document.getElementById('dawBg'),w=[60,110,80,140,55,95,70,120];for(let i=0;i<8;i++){const r=document.createElement('div');r.className='daw-row';const n=3+(i%3);for(let j=0;j<n;j++){const t=document.createElement('div');t.className='daw-track';t.style.width=w[(i*n+j)%w.length]+'px';r.appendChild(t);}c.appendChild(r);}})();
+</script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DROPAUDIO — Garso įrašų studija Vilniuje</title>
+  <meta name="description" content="Dropaudio – pažangi garso įrašų studija Vilniuje, siūlanti profesionalų reklamos įgarsinimą, muzikos kūrimą ir garso dizainą.">
+
+  <style>
+    /* ─── FONTS ─── */
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Black.otf') format('opentype'); font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Ahamono'; src: url('fonts/Ahamono-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+
+    /* ─── VARIABLES ─── */
+    :root {
+      --black:  #231F20;
+      --yellow: #EEDF15;
+      --grey:   #A7A9AB;
+      --light:  #F0EEEB;
+      --white:  #FFFFFF;
+      --max:    1200px;
+      --pad:    clamp(24px, 4vw, 64px);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Geomanist', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; color: var(--black); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--black);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 1px 0 rgba(255,255,255,0.07); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+    }
+    .nav-logo img { height: 30px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .lang-sw { display: flex; gap: 2px; }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Ahamono', monospace; font-size: 11px; font-weight: 400;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); padding: 5px 9px; border-radius: 2px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-btn:hover { color: rgba(255,255,255,0.7); }
+    .lang-btn.active { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow); color: var(--black);
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 10px 20px; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Mobile hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); display: block; transition: transform 0.2s; }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 190;
+      background: var(--black); padding: 24px var(--pad) 32px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer ul { list-style: none; }
+    .nav-drawer li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-drawer a { display: block; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 14px 0; }
+    .nav-drawer a:hover { color: var(--white); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh; background: var(--black);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-top: 68px; position: relative; overflow: hidden;
+    }
+
+    /* DAW background decoration */
+    .daw-bg {
+      position: absolute; inset: 68px 0 0 0;
+      pointer-events: none; opacity: 0.05;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 40px var(--pad); gap: 10px;
+    }
+    .daw-row { display: flex; gap: 8px; align-items: center; }
+    .daw-track { height: 12px; background: var(--white); border-radius: 2px; }
+
+    .hero-content { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 96px; width: 100%; }
+    .hero-label {
+      font-family: 'Ahamono', monospace; font-size: 12px; font-weight: 400;
+      color: var(--yellow); letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 28px; display: block;
+    }
+    .hero-h1 {
+      font-size: clamp(36px, 5.5vw, 76px); font-weight: 900; color: var(--white);
+      line-height: 1.0; letter-spacing: -0.5px; margin-bottom: 28px; max-width: 820px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px); font-weight: 400;
+      color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 540px; margin-bottom: 44px;
+    }
+    .btn-yellow {
+      display: inline-block; background: var(--yellow); color: var(--black);
+      font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 15px 32px; transition: opacity 0.2s;
+    }
+    .btn-yellow:hover { opacity: 0.85; }
+
+    /* ─── SECTION UTILS ─── */
+    .s-label {
+      font-family: 'Ahamono', monospace; font-size: 10px; font-weight: 400;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--grey); margin-bottom: 10px;
+    }
+    .s-title { font-size: clamp(26px, 3vw, 40px); font-weight: 900; margin-bottom: 52px; }
+    .s-title.white { color: var(--white); }
+    .s-title.dark { color: var(--black); }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); padding: 104px 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E8E8E8; }
+    .svc-card {
+      background: var(--white); padding: 36px 30px 32px;
+      transition: background 0.25s;
+      cursor: pointer; text-decoration: none; display: block;
+    }
+    .svc-card:hover { background: var(--black); }
+    .svc-card:hover .svc-num,
+    .svc-card:hover .svc-name { color: var(--white); }
+    .svc-card:hover .svc-bar { background: var(--yellow); }
+    .svc-num { font-family: 'Ahamono', monospace; font-size: 11px; color: var(--grey); letter-spacing: 2px; margin-bottom: 20px; display: block; }
+    .svc-bar { width: 28px; height: 3px; background: var(--black); margin-bottom: 18px; transition: background 0.25s; }
+    .svc-name { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.45; transition: color 0.25s; }
+    .section-foot { margin-top: 44px; }
+    .btn-outline {
+      display: inline-block; border: 2px solid var(--black); color: var(--black);
+      font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 12px 26px; transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--black); color: var(--white); }
+    .btn-outline.white { border-color: rgba(255,255,255,0.35); color: var(--white); }
+    .btn-outline.white:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+
+    /* ─── WORK ─── */
+    #work { background: var(--black); padding: 104px 0; }
+    #work .s-label { color: rgba(255,255,255,0.28); }
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .work-card {}
+    .video-wrap { position: relative; padding-bottom: 56.25%; background: #111; overflow: hidden; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .work-meta { margin-top: 16px; }
+    .work-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+    .work-desc { font-family: 'Ahamono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--light); padding: 104px 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text p { font-size: 16px; color: #4a4a4a; line-height: 1.75; margin-bottom: 18px; }
+    .about-cta { margin-top: 36px; }
+    .img-ph {
+      aspect-ratio: 4/3; background: #D8D5D0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-ph span { font-family: 'Ahamono', monospace; font-size: 10px; color: #A0A0A0; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* ─── WHY US ─── */
+    #why { background: var(--white); padding: 104px 0; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 40px; }
+    .why-card {}
+    .why-num {
+      font-family: 'Ahamono', monospace; font-size: 36px; color: var(--yellow);
+      line-height: 1; margin-bottom: 16px; display: block; font-weight: 400;
+    }
+    .why-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 9px; }
+    .why-desc { font-size: 14px; color: #666; line-height: 1.6; }
+
+    /* ─── AUDIO ─── */
+    #audio { background: var(--black); padding: 96px 0; }
+    #audio .s-label { color: rgba(255,255,255,0.28); }
+    .audio-intro { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 480px; margin-bottom: 40px; line-height: 1.6; }
+    .sc-wrap { overflow: hidden; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--yellow); padding: 104px 0; }
+    .contact-wrap { max-width: 640px; }
+    #contact .s-label { color: rgba(0,0,0,0.4); }
+    .contact-h { font-size: clamp(30px, 4vw, 52px); font-weight: 900; color: var(--black); line-height: 1.1; margin-bottom: 22px; }
+    .contact-p { font-size: 16px; color: rgba(0,0,0,0.6); line-height: 1.65; max-width: 460px; margin-bottom: 40px; }
+    .contact-row { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+    .btn-dark {
+      display: inline-block; background: var(--black); color: var(--white);
+      font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 15px 32px; transition: opacity 0.2s;
+    }
+    .btn-dark:hover { opacity: 0.8; }
+    .contact-tel { font-size: 14px; color: var(--black); }
+    .contact-tel .or { font-size: 12px; color: rgba(0,0,0,0.45); letter-spacing: 0.5px; display: block; margin-bottom: 3px; }
+    .contact-tel a { font-weight: 700; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--black); padding: 64px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 56px; margin-bottom: 52px; }
+    .footer-logo { height: 26px; margin-bottom: 22px; }
+    .footer-contact a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 6px; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-col-h { font-family: 'Ahamono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 18px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-family: 'Ahamono', monospace; font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 1px; }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-family: 'Ahamono', monospace; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--white); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 560px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about"    data-t="nav_about">Apie mus</a></li>
+      <li><a href="#services" data-t="nav_services">Paslaugos</a></li>
+      <li><a href="#work"     data-t="nav_work">Atlikti darbai</a></li>
+      <li><a href="#audio"    data-t="nav_voices">Balsai</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="lt" onclick="setLang('lt')">LT</button>
+        <button class="lang-btn"        data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-t="nav_cta">Susisiekti</a>
+    </div>
+    <button class="hamburger" id="ham" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="#about"    onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
+    <li><a href="#services" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li><a href="#work"     onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
+    <li><a href="#audio"    onclick="closeNav()" data-t="nav_voices">Balsai</a></li>
+    <li><a href="#contact"  onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
+  </ul>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero">
+  <div class="daw-bg" id="dawBg"></div>
+  <div class="hero-content">
+    <span class="hero-label" data-t="hero_label">Garso įrašų studija — Vilnius</span>
+    <h1 class="hero-h1" data-t="hero_h1">Garso įrašų studija Vilniuje</h1>
+    <p class="hero-sub" data-t="hero_sub">Reklamos įgarsinimas, muzikos kūryba, garso dizainas — visas audio projektas nuo pirmo aptarimo iki transliacijai paruošto failo. Nuo 2007 m.</p>
+    <a href="#contact" class="btn-yellow" data-t="hero_cta">Susisiekti</a>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="s-label">DROPAUDIO</div>
+    <h2 class="s-title dark" data-t="services_title">Mūsų paslaugos</h2>
+    <div class="services-grid">
+      <a href="tv-reklamos.html" class="svc-card">
+        <span class="svc-num">01</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_1">TV ir radijo reklamos įgarsinimas</div>
+      </a>
+      <a href="audio-reklamos.html" class="svc-card">
+        <span class="svc-num">02</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_2">Audio reklamos gamyba</div>
+      </a>
+      <a href="muzikos-kuryba.html" class="svc-card">
+        <span class="svc-num">03</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_3">Originalios muzikos kūryba</div>
+      </a>
+      <a href="animacijos-igarsinimas.html" class="svc-card">
+        <span class="svc-num">04</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_4">Animacijos įgarsinimas</div>
+      </a>
+      <a href="garso-adaptacija.html" class="svc-card">
+        <span class="svc-num">05</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_5">Garso adaptacija ir lokalizacija</div>
+      </a>
+      <a href="ivr.html" class="svc-card">
+        <span class="svc-num">06</span>
+        <div class="svc-bar"></div>
+        <div class="svc-name" data-t="svc_6">IVR ir autoatsakikliai</div>
+      </a>
+    </div>
+    <div class="section-foot">
+      <a href="paslaugos.html" class="btn-outline" data-t="services_cta">Visos paslaugos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WORK ══════════════════ -->
+<section id="work">
+  <div class="container">
+    <div class="s-label">PORTFOLIO</div>
+    <h2 class="s-title white" data-t="work_title">Atlikti darbai</h2>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/OpWMewbpc7k?rel=0&modestbranding=1"
+            title="Tautiška giesmė aplink pasaulį" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="work-meta">
+          <div class="work-title">Tautiška giesmė aplink pasaulį</div>
+          <div class="work-desc">TVC · Voice over, music &amp; sound design</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/PDNdII3JxnQ?rel=0&modestbranding=1"
+            title="Vinted" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="work-meta">
+          <div class="work-title">Vinted</div>
+          <div class="work-desc">Mobile App TVC · Lithuanian voice-over adaptation</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1986583205?title=0&byline=0&portrait=0"
+            title="Ignitis" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="work-meta">
+          <div class="work-title">Ignitis</div>
+          <div class="work-desc">Voice-over casting &amp; recording · Free Finga collaboration</div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/HqGXPrPo2zM?rel=0&modestbranding=1"
+            title="Vaikų linija" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="work-meta">
+          <div class="work-title">Vaikų linija</div>
+          <div class="work-desc">TVC · Voice over, music &amp; sound design</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="section-foot">
+      <a href="index.html#work" class="btn-outline white" data-t="work_cta">Visi darbai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="s-label">DROPAUDIO</div>
+        <h2 class="s-title dark" data-t="about_title">Kas mes</h2>
+        <p data-t="about_p1">DROPAUDIO — garso įrašų studija Vilniuje, dirbanti kaip pilno ciklo audio partneris. Balsų atranka, skriptų redakcija, įrašymas, miksavimas ir galutinis pristatymas — vienas procesas, viena atsakomybė.</p>
+        <p data-t="about_p2">Nuo 2007 m. dirbame su agentūromis ir prekės ženklais: DDB, TBWA, McCann, Vinted, Ignitis, airBaltic. Mūsų duomenų bazėje — daugiau nei 700 balsų talentų, studijoje — du ProTools aparatai su SourceConnect ryšiu.</p>
+        <div class="about-cta">
+          <a href="apie.html" class="btn-outline" data-t="about_cta">Plačiau apie mus</a>
+        </div>
+      </div>
+      <div>
+        <div class="img-ph">
+          <span>Studio photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WHY US ══════════════════ -->
+<section id="why">
+  <div class="container">
+    <div class="s-label">DROPAUDIO</div>
+    <h2 class="s-title dark" data-t="why_title">Kodėl mes?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-num">01</span>
+        <div class="why-title" data-t="why_1_t">17+ metų patirtis</div>
+        <div class="why-desc"  data-t="why_1_d">Tarptautinių audio projektų praktika nuo 2007 m.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-num">02</span>
+        <div class="why-title" data-t="why_2_t">700+ balsų</div>
+        <div class="why-desc"  data-t="why_2_d">Lietuvių, latvių, estų, anglų ir kitų kalbų talentai.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-num">03</span>
+        <div class="why-title" data-t="why_3_t">All-in-one produkcija</div>
+        <div class="why-desc"  data-t="why_3_d">Nuo atrankos iki galutinio failo — vienoje vietoje.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-num">04</span>
+        <div class="why-title" data-t="why_4_t">ProTools + SourceConnect</div>
+        <div class="why-desc"  data-t="why_4_d">Dvi studijos, realaus laiko ryšys su tarptautiniais klientais.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-num">05</span>
+        <div class="why-title" data-t="why_5_t">Aukšto lygio vadyba</div>
+        <div class="why-desc"  data-t="why_5_d">Dedikuotas vadovas kiekvienam projektui nuo pirmos minutės.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-num">06</span>
+        <div class="why-title" data-t="why_6_t">Broadcast-ready</div>
+        <div class="why-desc"  data-t="why_6_d">Tiksliai pagal spec, laiku, be permontavimų.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ AUDIO ══════════════════ -->
+<section id="audio">
+  <div class="container">
+    <div class="s-label">DEMO</div>
+    <h2 class="s-title white" data-t="audio_title">Klausykite</h2>
+    <p class="audio-intro" data-t="audio_desc">Pavyzdžiai iš mūsų portfolio — balsai, reklamos, garso dizainas.</p>
+    <div class="sc-wrap">
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/dropaudio/sets/lithuanian-voice-over-recording-studio&color=%23EEDF15&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="s-label">KONTAKTAI</div>
+      <h2 class="contact-h" data-t="contact_title">Norite pasitarti?</h2>
+      <p class="contact-p" data-t="contact_desc">Nesvarbu, ar turite paruoštą scenarijų, ar tik idėją — susisiekite. Įvertinsime projektą ir pasiūlysime sprendimą.</p>
+      <div class="contact-row">
+        <a href="mailto:hello@dropaudio.lt" class="btn-dark" data-t="contact_cta">Rašyti mums</a>
+        <div class="contact-tel">
+          <span class="or" data-t="contact_or">arba skambinkite</span>
+          <a href="tel:+37061069726">+370 610 69 726</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <img class="footer-logo" src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO">
+        <div class="footer-contact">
+          <a href="mailto:hello@dropaudio.lt">hello@dropaudio.lt</a>
+          <a href="tel:+37061069726">+370 610 69 726</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-h" data-t="services_title">Paslaugos</div>
+        <ul class="footer-links">
+          <li><a href="#" data-t="svc_1">TV ir radijo reklamos įgarsinimas</a></li>
+          <li><a href="#" data-t="svc_2">Audio reklamos gamyba</a></li>
+          <li><a href="#" data-t="svc_3">Originalios muzikos kūryba</a></li>
+          <li><a href="#" data-t="svc_4">Animacijos įgarsinimas</a></li>
+          <li><a href="#" data-t="svc_5">Garso adaptacija ir lokalizacija</a></li>
+          <li><a href="#" data-t="svc_6">IVR ir autoatsakikliai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-h">DROPAUDIO</div>
+        <ul class="footer-links">
+          <li><a href="#about"    data-t="nav_about">Apie mus</a></li>
+          <li><a href="#work"     data-t="nav_work">Atlikti darbai</a></li>
+          <li><a href="#audio"    data-t="nav_voices">Balsai</a></li>
+          <li><a href="#contact"  data-t="nav_cta">Susisiekti</a></li>
+          <li><a href="#">ES parama</a></li>
+          <li><a href="#">Įgarsintojams</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-copy">© 2025 DROP AUDIO UAB — Vilnius, Lithuania</span>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/dropaudio/" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.instagram.com/dropaudio_lithuania/" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.linkedin.com/company/drop-audio/" target="_blank" rel="noopener">LI</a>
+        <a href="https://www.youtube.com/channel/UCNv2Iu15EPPxlIArCiTl3eQ" target="_blank" rel="noopener">YT</a>
+        <a href="https://soundcloud.com/dropaudio" target="_blank" rel="noopener">SC</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══════════════════ JS ══════════════════ -->
+<script>
+/* ─── TRANSLATIONS ─── */
+const T = {
+  lt: {
+    nav_about:'Apie mus', nav_services:'Paslaugos', nav_work:'Atlikti darbai',
+    nav_voices:'Balsai', nav_cta:'Susisiekti',
+    hero_label:'Garso įrašų studija — Vilnius',
+    hero_h1:'Garso įrašų studija Vilniuje',
+    hero_sub:'Reklamos įgarsinimas, muzikos kūryba, garso dizainas — visas audio projektas nuo pirmo aptarimo iki transliacijai paruošto failo. Nuo 2007 m.',
+    hero_cta:'Susisiekti',
+    services_title:'Mūsų paslaugos',
+    svc_1:'TV ir radijo reklamos įgarsinimas',
+    svc_2:'Audio reklamos gamyba',
+    svc_3:'Originalios muzikos kūryba',
+    svc_4:'Animacijos įgarsinimas',
+    svc_5:'Garso adaptacija ir lokalizacija',
+    svc_6:'IVR ir autoatsakikliai',
+    services_cta:'Visos paslaugos',
+    work_title:'Atlikti darbai', work_cta:'Visi darbai',
+    about_title:'Kas mes',
+    about_p1:'DROPAUDIO — garso įrašų studija Vilniuje, dirbanti kaip pilno ciklo audio partneris. Balsų atranka, skriptų redakcija, įrašymas, miksavimas ir galutinis pristatymas — vienas procesas, viena atsakomybė.',
+    about_p2:'Nuo 2007 m. dirbame su agentūromis ir prekės ženklais: DDB, TBWA, McCann, Vinted, Ignitis, airBaltic. Mūsų duomenų bazėje — daugiau nei 700 balsų talentų, studijoje — du ProTools aparatai su SourceConnect ryšiu.',
+    about_cta:'Plačiau apie mus',
+    why_title:'Kodėl mes?',
+    why_1_t:'17+ metų patirtis', why_1_d:'Tarptautinių audio projektų praktika nuo 2007 m.',
+    why_2_t:'700+ balsų',        why_2_d:'Lietuvių, latvių, estų, anglų ir kitų kalbų talentai.',
+    why_3_t:'All-in-one produkcija', why_3_d:'Nuo atrankos iki galutinio failo — vienoje vietoje.',
+    why_4_t:'ProTools + SourceConnect', why_4_d:'Dvi studijos, realaus laiko ryšys su tarptautiniais klientais.',
+    why_5_t:'Aukšto lygio vadyba', why_5_d:'Dedikuotas vadovas kiekvienam projektui nuo pirmos minutės.',
+    why_6_t:'Broadcast-ready',    why_6_d:'Tiksliai pagal spec, laiku, be permontavimų.',
+    audio_title:'Klausykite',
+    audio_desc:'Pavyzdžiai iš mūsų portfolio — balsai, reklamos, garso dizainas.',
+    contact_title:'Norite pasitarti?',
+    contact_desc:'Nesvarbu, ar turite paruoštą scenarijų, ar tik idėją — susisiekite. Įvertinsime projektą ir pasiūlysime sprendimą.',
+    contact_cta:'Rašyti mums', contact_or:'arba skambinkite',
+  },
+  en: {
+    nav_about:'About us', nav_services:'Services', nav_work:'Portfolio',
+    nav_voices:'Voice artists', nav_cta:'Get in touch',
+    hero_label:'Baltic audio. Zero surprises.',
+    hero_h1:'Sound recording studio in Vilnius',
+    hero_sub:'Full-service audio production for the Baltic market. One contact for Lithuanian, Latvian and Estonian voice-overs — broadcast-ready, on spec, first take.',
+    hero_cta:'Get in touch',
+    services_title:'What we do',
+    svc_1:'Lithuanian, Latvian &amp; Estonian voice-over',
+    svc_2:'Audio adaptation &amp; localisation',
+    svc_3:'TV &amp; radio commercial production',
+    svc_4:'Original music &amp; sound design',
+    svc_5:'Animation voice-over',
+    svc_6:'IVR &amp; telephone auto attendant',
+    services_cta:'All services',
+    work_title:'Our work', work_cta:'View all projects',
+    about_title:'About us',
+    about_p1:'DROPAUDIO is a full-service audio production studio in Vilnius. Voice casting, script review, recording, mixing and final delivery — one process, one point of accountability.',
+    about_p2:"Since 2007, we've worked with international localization agencies and global brands: TransPerfect, Hogarth, Translate Plus, Vinted, airBaltic. 700+ voice artists. Two ProTools studios with SourceConnect. Broadcast-ready delivery — on spec, on time, first take.",
+    about_cta:'About us',
+    why_title:'Why DROPAUDIO',
+    why_1_t:'17+ years',            why_1_d:'International audio production experience since 2007.',
+    why_2_t:'700+ voice artists',   why_2_d:'Lithuanian, Latvian, Estonian, English and other languages.',
+    why_3_t:'Full-service',         why_3_d:'From casting to final file — one place, one team.',
+    why_4_t:'ProTools + SourceConnect', why_4_d:'Two studios, real-time connection with international clients.',
+    why_5_t:'Senior account management', why_5_d:'A dedicated producer owns your project from first brief.',
+    why_6_t:'Broadcast-ready',      why_6_d:'On spec, on time, first take. Baltic audio. Zero surprises.',
+    audio_title:'Listen',
+    audio_desc:'Samples from our portfolio — voice-over, commercials, sound design.',
+    contact_title:'Ready to talk?',
+    contact_desc:"Send us a brief, a script, or just a rough idea. We'll respond with a clear proposal — no back-and-forth, no surprises.",
+    contact_cta:'Write to us', contact_or:'or call us',
+  }
+};
+
+let lang = 'lt';
+
+function setLang(l) {
+  lang = l;
+  const d = T[l];
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const k = el.dataset.t;
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  document.documentElement.lang = l;
+  document.title = l === 'en'
+    ? 'DROPAUDIO — Sound recording studio in Vilnius, Lithuania'
+    : 'DROPAUDIO — Garso įrašų studija Vilniuje';
+}
+
+/* ─── DAW BG ─── */
+(function buildDaw() {
+  const c = document.getElementById('dawBg');
+  if (!c) return;
+  const widths = [60,110,80,140,55,95,70,120,85,100,65,130,75,90,115,50,105,88];
+  for (let i = 0; i < 16; i++) {
+    const row = document.createElement('div');
+    row.className = 'daw-row';
+    const n = 4 + (i % 3);
+    for (let j = 0; j < n; j++) {
+      const t = document.createElement('div');
+      t.className = 'daw-track';
+      t.style.width = widths[(i * n + j) % widths.length] + 'px';
+      row.appendChild(t);
+    }
+    c.appendChild(row);
+  }
+})();
+
+/* ─── NAV SCROLL ─── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ─── MOBILE NAV ─── */
+function toggleNav() {
+  document.getElementById('drawer').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('drawer').classList.remove('open');
+}
+</script>
+</body>
+</html>
