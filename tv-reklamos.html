@@ -23,7 +23,7 @@
     nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--black); transition:box-shadow 0.3s; }
     nav.scrolled { box-shadow:0 1px 0 rgba(255,255,255,0.07); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; height:68px; max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
-    .nav-logo img { height:30px; }
+    .nav-logo img { height:38px; }
     .nav-links { display:flex; gap:32px; list-style:none; }
     .nav-links a { font-size:13px; font-weight:500; color:rgba(255,255,255,0.7); letter-spacing:0.3px; transition:color 0.2s; }
     .nav-links a:hover { color:#fff; }
@@ -110,7 +110,7 @@
 
     footer { background:var(--black); padding:56px 0 32px; }
     .footer-grid { display:grid; grid-template-columns:200px 1fr 1fr; gap:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.07); }
-    .footer-logo img { height:26px; margin-bottom:16px; }
+    .footer-logo img { height:33px; margin-bottom:16px; }
     .footer-tagline { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.6; }
     .footer-col-title { font-family:'Ahamono',monospace; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:16px; }
     .footer-col ul { list-style:none; }
@@ -147,8 +147,8 @@
     <ul class="nav-links">
       <li><a href="index.html#about" data-t="nav_about">Apie mus</a></li>
       <li><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos</a></li>
-      <li><a href="index.html#work" data-t="nav_work">Atlikti darbai</a></li>
-      <li><a href="index.html#audio" data-t="nav_voices">Balsai</a></li>
+      <li><a href="visi-darbai.html" data-t="nav_work">Atlikti darbai</a></li>
+      <li><a href="balsai.html" data-t="nav_voices">Balsai</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-sw">
@@ -164,7 +164,7 @@
   <ul>
     <li><a href="index.html#about" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
     <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
-    <li><a href="index.html#work" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
+    <li><a href="visi-darbai.html" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
     <li><a href="index.html#contact" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
   </ul>
 </div>
@@ -190,9 +190,9 @@
 
         <h2 data-t="body_h2b">Ko galite tikėtis</h2>
         <ul>
-          <li data-t="li_1">Balsų atranka iš 700+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų</li>
+          <li data-t="li_1">Balsų atranka iš 900+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų</li>
           <li data-t="li_2">Scenarijaus redakcija — patikrinimas, ar tekstas skamba natūraliai ir tinka ekranui</li>
-          <li data-t="li_3">Įrašymas ProTools studijoje Vilniuje arba per SourceConnect</li>
+          <li data-t="li_3">Įrašymas mūsų studijoje Vilniuje arba nuotoliniu būdu</li>
           <li data-t="li_4">Muzikos ir garso efektų sinchronizacija ir miksas</li>
           <li data-t="li_5">Broadcast-ready pristatymas pagal kliento spec: LuFS, formatas, metaduomenys</li>
           <li data-t="li_6">Greiti terminai — standartinis projektas: 24–48 valandos</li>
@@ -203,7 +203,7 @@
 
         <div class="stats-row" style="margin-top:40px">
           <div class="stat-block">
-            <div class="n">700+</div>
+            <div class="n">900+</div>
             <div class="l" data-t="stat_1">Balsų duomenų bazė</div>
           </div>
           <div class="stat-block">
@@ -214,21 +214,8 @@
       </div>
 
       <div class="detail-sidebar">
-        <div class="sidebar-box">
-          <div class="sidebar-box-title" data-t="sb1_title">Tinka</div>
-          <ul style="list-style:none;padding:0">
-            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_1">TV reklamos (TVC, online video)</li>
-            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_2">Radijo reklamos ir jingle'ai</li>
-            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_3">Baltijos rinkos lokalizacija</li>
-            <li style="font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid #e8e8e8" data-t="fit_4">Skaitmeninės reklamos, YouTube prerolls</li>
-            <li style="font-size:13px;color:#555;padding:7px 0" data-t="fit_5">Agentūrų ir in-house komandų projektai</li>
-          </ul>
-        </div>
-        <div class="sidebar-box">
-          <div class="sidebar-box-title" data-t="sb2_title">Klientai</div>
-          <p data-t="sb2_body">DDB, TBWA, McCann, Coca-Cola, IKEA, Vinted, Ignitis, P&G, Colgate-Palmolive, airBaltic ir kt.</p>
-        </div>
-        <div style="margin-top:20px">
+        <img src="Nuotraukos/tv-reklamos-foto.jpg" alt="TV ir radijo reklamos įgarsinimas" style="width:100%;display:block;margin-bottom:20px;">
+        <div style="margin-top:0">
           <a href="index.html#contact" class="btn-yellow" style="display:block;text-align:center" data-t="hero_cta">Aptarti projektą</a>
         </div>
       </div>
@@ -243,7 +230,7 @@
     <div class="process-steps">
       <div class="step"><div class="step-num">01</div><div class="step-name" data-t="p1n">Briefas</div><div class="step-desc" data-t="p1d">Scenarijus, terminas, kalbos, formatai. Vienas trumpas pokalbis arba el. laiškas.</div></div>
       <div class="step"><div class="step-num">02</div><div class="step-name" data-t="p2n">Casting</div><div class="step-desc" data-t="p2d">Parenkame 3–5 tinkamiausius balsus. Klientas renkasi arba gauname demo įrašus.</div></div>
-      <div class="step"><div class="step-num">03</div><div class="step-name" data-t="p3n">Įrašymas</div><div class="step-desc" data-t="p3d">ProTools studijoje su gyvai stebinčiu klientu arba per SourceConnect. Sesiją vedame mes.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-name" data-t="p3n">Įrašymas</div><div class="step-desc" data-t="p3d">Mūsų studijoje su gyvai stebinčiu klientu arba nuotoliniu ryšiu. Sesiją vedame mes.</div></div>
       <div class="step"><div class="step-num">04</div><div class="step-name" data-t="p4n">Pristatymas</div><div class="step-desc" data-t="p4d">Broadcast-ready failas pagal spec. Pirmasis pristatymas yra galutinis — taip dirbame.</div></div>
     </div>
   </div>
@@ -298,9 +285,10 @@
           <li><a href="tv-reklamos.html" data-t="svc_name">TV ir radijo reklamos</a></li>
           <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
           <li><a href="muzikos-kuryba.html">Muzikos kūryba</a></li>
-          <li><a href="animacijos-igarsinimas.html">Animacijos įgarsinimas</a></li>
+          <li><a href="animacijos-igarsinimas.html">Animacijos ir audioknygų įgarsinimas</a></li>
           <li><a href="garso-adaptacija.html">Garso lokalizacija</a></li>
           <li><a href="ivr.html">IVR ir autoatsakikliai</a></li>
+          <li><a href="audiobrandingas.html">Audiobrandingas</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -330,9 +318,9 @@ const T = {
     body_p1:'Dauguma studijų priima scenarijų ir grąžina WAV failą. Mes dirbame kitaip: įsigilinome į projektą, tvarkome balsų casting\'ą, redaguojame scenarijų jei reikia, režisuojame įrašą ir pristatome broadcast-ready failą, kuris tiesiog veikia.',
     body_p2:'17 metų patirties reiškia, kad žinome, ko tikisi transliacijos redakcija, ką vertina agentūros ir kaip atrodo projektas, kai klientas pirmą kartą bando dirbti su Baltijos rinka. Mes eliminuojame tuos nemalonius netikėtumus.',
     body_h2b:'Ko galite tikėtis',
-    li_1:'Balsų atranka iš 700+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų',
+    li_1:'Balsų atranka iš 900+ lietuvių, latvių, estų, anglų ir kitų kalbų talentų',
     li_2:'Scenarijaus redakcija — patikrinimas, ar tekstas skamba natūraliai ir tinka ekranui',
-    li_3:'Įrašymas ProTools studijoje Vilniuje arba per SourceConnect',
+    li_3:'Įrašymas mūsų studijoje Vilniuje arba nuotoliniu būdu',
     li_4:'Muzikos ir garso efektų sinchronizacija ir miksas',
     li_5:'Broadcast-ready pristatymas pagal kliento spec: LuFS, formatas, metaduomenys',
     li_6:'Greiti terminai — standartinis projektas: 24–48 valandos',
@@ -345,7 +333,7 @@ const T = {
     proc_title:'Nuo užklausos iki transliacijos',
     p1n:'Briefas', p1d:'Scenarijus, terminas, kalbos, formatai. Vienas trumpas pokalbis arba el. laiškas.',
     p2n:'Casting', p2d:'Parenkame 3–5 tinkamiausius balsus. Klientas renkasi arba gauname demo įrašus.',
-    p3n:'Įrašymas', p3d:'ProTools studijoje su gyvai stebinčiu klientu arba per SourceConnect. Sesiją vedame mes.',
+    p3n:'Įrašymas', p3d:'Mūsų studijoje su gyvai stebinčiu klientu arba nuotoliniu ryšiu. Sesiją vedame mes.',
     p4n:'Pristatymas', p4d:'Broadcast-ready failas pagal spec. Pirmasis pristatymas yra galutinis — taip dirbame.',
     rel_title:'Taip pat galime padėti',
     rel_1_n:'Garso adaptacija ir lokalizacija', rel_1_d:'Visas tarptautinės kampanijos pritaikymas Baltijos rinkai',
@@ -364,9 +352,9 @@ const T = {
     body_p1:'Most studios take a script and return a WAV file. We work differently: we get inside the project, handle voice casting, adapt the script if needed, direct the session, and deliver a broadcast-ready file that simply works.',
     body_p2:'17 years of experience means we know what broadcast editors expect, what agencies value, and how a project looks when a client is working with the Baltic market for the first time. We eliminate the unpleasant surprises.',
     body_h2b:'What you can expect',
-    li_1:'Voice casting from 700+ Lithuanian, Latvian, Estonian, English and other language talents',
+    li_1:'Voice casting from 900+ Lithuanian, Latvian, Estonian, English and other language talents',
     li_2:'Script review — checking that the text sounds natural and works on screen',
-    li_3:'Recording in our ProTools studio in Vilnius or via SourceConnect',
+    li_3:'Recording in our studio in Vilnius or remotely',
     li_4:'Music and sound effect synchronisation and mix',
     li_5:'Broadcast-ready delivery to spec: LuFS, format, metadata',
     li_6:'Fast turnaround — standard project: 24–48 hours',
@@ -379,7 +367,7 @@ const T = {
     proc_title:'From brief to broadcast',
     p1n:'Brief', p1d:'Script, deadline, languages, formats. One short call or email.',
     p2n:'Casting', p2d:'We shortlist 3–5 best-fit voices. Client selects or we provide demo recordings.',
-    p3n:'Recording', p3d:'In our ProTools studio with live client presence or via SourceConnect. We run the session.',
+    p3n:'Recording', p3d:'In our studio with the client present or via remote connection. We run the session.',
     p4n:'Delivery', p4d:'Broadcast-ready file to spec. The first delivery is the final one — that\'s how we work.',
     rel_title:'We can also help with',
     rel_1_n:'Audio adaptation & localization', rel_1_d:'Full adaptation of international campaigns for the Baltic market',
@@ -395,7 +383,7 @@ function setLang(l) {
   lang = l;
   document.querySelectorAll('[data-t]').forEach(el => { const k=el.dataset.t; if(T[l][k]!==undefined) el.innerHTML=T[l][k]; });
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
-  document.documentElement.lang=l;
+  document.documentElement.lang=l;localStorage.setItem("dropaudio_lang",l);
   document.getElementById('page-title').textContent = l==='lt' ? 'TV ir radijo reklamos įgarsinimas — DROPAUDIO' : 'TV & Radio Commercial Voiceover — DROPAUDIO';
   document.getElementById('page-desc').setAttribute('content', l==='lt'
     ? 'Profesionalus TV ir radijo reklamos įgarsinimas Vilniuje. Balsų atranka, įrašymas, miksas — broadcast-ready.'
@@ -405,6 +393,7 @@ function toggleNav(){document.getElementById('drawer').classList.toggle('open');
 function closeNav(){document.getElementById('drawer').classList.remove('open');}
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10));
 (function buildDaw(){const c=document.getElementById('dawBg'),w=[60,110,80,140,55,95,70,120];for(let i=0;i<8;i++){const r=document.createElement('div');r.className='daw-row';const n=3+(i%3);for(let j=0;j<n;j++){const t=document.createElement('div');t.className='daw-track';t.style.width=w[(i*n+j)%w.length]+'px';r.appendChild(t);}c.appendChild(r);}})();
+(function(){var _l=localStorage.getItem("dropaudio_lang");if(_l==="en")setLang("en");})();
 </script>
 </body>
 </html>
