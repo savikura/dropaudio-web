@@ -25,8 +25,8 @@
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
     p{line-height:1.7}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--black);transition:box-shadow .3s}
-    nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,.07)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:transparent;transition:background .3s,box-shadow .3s}
+    nav.scrolled{background:var(--black);box-shadow:0 1px 0 rgba(255,255,255,.07)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
     .nav-logo img{height:38px}
     .nav-links{display:flex;gap:32px;list-style:none}
@@ -278,6 +278,7 @@ function setLang(l){lang=l;document.querySelectorAll('[data-t]').forEach(el=>{co
 function toggleNav(){document.getElementById('drawer').classList.toggle('open');}
 function closeNav(){document.getElementById('drawer').classList.remove('open');}
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10));
+document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10);
 (function buildDaw(){const c=document.getElementById('dawBg'),w=[60,110,80,140,55,95,70,120];for(let i=0;i<8;i++){const r=document.createElement('div');r.className='daw-row';const n=3+(i%3);for(let j=0;j<n;j++){const t=document.createElement('div');t.className='daw-track';t.style.width=w[(i*n+j)%w.length]+'px';r.appendChild(t);}c.appendChild(r);}})();
 (function(){var _l=localStorage.getItem("dropaudio_lang");if(_l==="en")setLang("en");})();
 </script>
