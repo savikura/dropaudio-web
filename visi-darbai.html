@@ -15,7 +15,7 @@
     .section-header{display:flex;align-items:center;justify-content:space-between;padding:48px 0;cursor:pointer;user-select:none;border-bottom:1px solid rgba(0,0,0,.06)}.section-header:hover .cat-toggle{color:var(--yellow)}.section-header-left{display:flex;flex-direction:column}.s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:10px}.s-title{font-size:clamp(24px,2.8vw,38px);font-weight:900;color:var(--black)}
     .cat-toggle{font-size:32px;font-weight:300;line-height:1;color:var(--black);transition:transform .3s,color .2s;flex-shrink:0}.cat-toggle.open{transform:rotate(45deg)}
     .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#E0DEDB;display:none;padding-bottom:2px}
-    .video-grid.open{display:grid;margin-bottom:48px}
+    .video-grid.open{display:grid;margin-bottom:96px}
     .work-section:has(.video-grid.open)+.work-section .section-header{padding-top:0}
     .video-card{background:var(--white);overflow:hidden}.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
     .audio-card{background:var(--white);overflow:hidden;padding:20px 20px 0}.audio-card-title{font-size:12px;font-weight:700;color:var(--black);letter-spacing:.3px;text-transform:uppercase;font-family:'Ahamono',monospace;margin-bottom:12px;opacity:.6}
@@ -40,7 +40,7 @@
         <button class="lang-btn active" data-lang="lt" onclick="setLang('lt')">LT</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
-      <a href="index.html#contact" class="nav-cta" data-t="nav_cta">Susisiekti</a>
+      <a href="mailto:hello@dropaudio.lt" class="nav-cta" data-t="nav_cta">Susisiekti</a>
     </div>
     <button class="hamburger" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </div>
@@ -50,7 +50,7 @@
     <li><a href="apie.html" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
     <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
     <li><a href="visi-darbai.html" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
-    <li><a href="index.html#contact" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
+    <li><a href="mailto:hello@dropaudio.lt" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
   </ul>
 </div>
 
