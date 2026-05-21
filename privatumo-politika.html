@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privatumo politika — DROPAUDIO</title>
+  <meta name="description" content="UAB DROP AUDIO privatumo politika — asmens duomenų rinkimo, tvarkymo ir saugojimo principai.">
+  <link rel="canonical" href="https://dropaudio.lt/privatumo-politika.html">
+  <style>
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Black.otf') format('opentype'); font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; }
+    @font-face { font-family: 'Geomanist'; src: url('fonts/Geomanist-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Ahamono'; src: url('fonts/Ahamono-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; }
+
+    :root {
+      --black:  #231F20;
+      --yellow: #EEDF15;
+      --grey:   #A7A9AB;
+      --light:  #F0EEEB;
+      --white:  #FFFFFF;
+      --max:    1200px;
+      --pad:    clamp(24px, 4vw, 64px);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Geomanist', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; color: var(--black); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* ─── NAV ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--black); box-shadow: 0 1px 0 rgba(255,255,255,0.07); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .nav-logo img { height: 38px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-cta { background: var(--yellow); color: var(--black); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 20px; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); display: block; }
+    .nav-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--black); z-index: 199; padding: 24px var(--pad) 32px; }
+    .nav-drawer.open { display: block; }
+    .nav-drawer ul { list-style: none; }
+    .nav-drawer li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-drawer a { display: block; padding: 14px 0; font-size: 15px; color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-right .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header { background: var(--black); padding: 120px 0 64px; }
+    .page-header .s-label { font-family: 'Ahamono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .page-header h1 { font-size: clamp(32px, 4vw, 56px); font-weight: 900; color: var(--white); line-height: 1.1; }
+
+    /* ─── CONTENT ─── */
+    .policy-content { padding: 80px 0 100px; }
+    .policy-content .container { max-width: 780px; }
+    .policy-section { margin-bottom: 56px; }
+    .policy-section h2 { font-family: 'Ahamono', monospace; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #E0DEDB; }
+    .policy-section p { font-size: 15px; line-height: 1.75; color: #3a3637; margin-bottom: 16px; }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section ul { margin: 16px 0 16px 20px; }
+    .policy-section ul li { font-size: 14px; line-height: 1.7; color: #3a3637; margin-bottom: 10px; }
+    .policy-section ul li strong { font-weight: 600; color: var(--black); }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--black); padding: 64px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 56px; margin-bottom: 52px; }
+    .footer-logo { height: 33px; margin-bottom: 22px; }
+    .footer-contact a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 6px; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-col-h { font-family: 'Ahamono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 18px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bar { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.07); flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-family: 'Ahamono', monospace; font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 1px; }
+    .footer-social { display: flex; gap: 20px; }
+    .footer-social a { font-family: 'Ahamono', monospace; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--white); }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; gap: 40px; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Apie mus</a></li>
+      <li><a href="paslaugos.html">Paslaugos</a></li>
+      <li><a href="visi-darbai.html">Atlikti darbai</a></li>
+      <li><a href="balsai.html">Balsai</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="mailto:hello@dropaudio.lt" class="nav-cta">Susisiekti</a>
+    </div>
+    <button class="hamburger" id="ham" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="index.html#about" onclick="closeNav()">Apie mus</a></li>
+    <li><a href="paslaugos.html" onclick="closeNav()">Paslaugos</a></li>
+    <li><a href="visi-darbai.html" onclick="closeNav()">Atlikti darbai</a></li>
+    <li><a href="balsai.html" onclick="closeNav()">Balsai</a></li>
+    <li><a href="mailto:hello@dropaudio.lt" onclick="closeNav()">Susisiekti</a></li>
+  </ul>
+</div>
+
+<!-- ══════ PAGE HEADER ══════ -->
+<div class="page-header">
+  <div class="container">
+    <div class="s-label">Teisinė informacija</div>
+    <h1>Privatumo politika</h1>
+  </div>
+</div>
+
+<!-- ══════ CONTENT ══════ -->
+<div class="policy-content">
+  <div class="container">
+
+    <div class="policy-section">
+      <h2>Bendrosios nuostatos</h2>
+      <p>Ši privatumo politika reglamentuoja UAB "DROP AUDIO" valdomos internetinės svetainės <strong>dropaudio.lt</strong> naudotojo pagrindinius asmens duomenų rinkimo, tvarkymo ir saugojimo principus bei tvarką.</p>
+      <p>Interneto puslapį administruoja UAB "DROP AUDIO", buveinės adresas Giedraičių g. 60B-106, Vilnius LT-08212, įmonės kodas 302303216 (toliau – Duomenų valdytojas), kuris nustato duomenų subjekto tvarkymo priemones ir tikslus.</p>
+      <p>Duomenų subjektu šioje Politikoje laikomas bet kuris fizinis asmuo, besinaudojantis interneto svetaine.</p>
+      <p>Naudodamiesi www.dropaudio.lt svetaine duomenų subjektas sutinka su informacijos rinkimu ir naudojimu laikantis šios Privatumo politikos.</p>
+      <p>Tvarkydami Jūsų asmens duomenis, vadovaujamasi 2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamento (ES) 2016/679 dėl fizinių asmenų apsaugos tvarkant asmens duomenis (BDAR), Lietuvos Respublikos asmens duomenų teisinės apsaugos įstatymu (ADTAĮ), Lietuvos Respublikos elektroninių ryšių įstatymo (ERĮ) bei kitų tiesiogiai taikomų teisės aktų nuostatomis.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Slapukai</h2>
+      <p>Svetainė naudoja slapukus (angl. <em>cookies</em>) — nedidelius tekstinius failus, saugomus Jūsų įrenginyje. Žemiau pateikiamas svetainėje naudojamų slapukų sąrašas.</p>
+      <ul>
+        <li><strong>_ga</strong> — „Google Analytics" slapukas. Apskaičiuoja lankytojų, seansų ir kampanijų duomenis, stebi svetainės naudojimą. Informacija saugoma anonimiškai. Galioja 13 mėnesių.</li>
+        <li><strong>pll_language</strong> — „Polylang" slapukas. Įsimena naudotojo pasirinktą kalbą. Galioja iki seanso pabaigos.</li>
+        <li><strong>dropaudio_lang</strong> — svetainės slapukas, įsimena Jūsų pasirinktą kalbą (LT arba EN) grįžtant į svetainę.</li>
+        <li><strong>real_cookie_banner</strong> — saugo lankytojo sutikimą dėl slapukų naudojimo. Galioja 1 metus.</li>
+        <li><strong>sbjs_*</strong> — „Sourcebuster" analitiniai slapukai. Nustato apsilankymo šaltinį ir saugo informaciją apie naudotojo veiksmus, siekiant pagerinti svetainės patirtį.</li>
+      </ul>
+      <p>Jūs galite atsisakyti slapukų savo naršyklės nustatymuose. Atkreipkite dėmesį, kad išjungus tam tikrus slapukus, kai kurios svetainės funkcijos gali neveikti tinkamai.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Baigiamosios nuostatos</h2>
+      <p>Šios Politikos pagrindu kylantiems santykiams taikoma Lietuvos Respublikos teisė.</p>
+      <p>Duomenų valdytojas neatsako už žalą, įskaitant duomenų praradimą ar sugadinimą, atsiradusį dėl paties duomenų subjekto ar trečiųjų asmenų veiksmų, klaidingo duomenų įvedimo ar netinkamo svetainės naudojimo.</p>
+      <p>Duomenų valdytojas pasilieka teisę koreguoti šią Privatumo politiką. Apie esminius pakeitimus pranešame svetainėje. Naudodamiesi svetainės paslaugomis, Jūs patvirtinate, kad sutinkate laikytis šios Politikos.</p>
+      <p>Klausimais dėl asmens duomenų tvarkymo kreipkitės: <a href="mailto:hello@dropaudio.lt" style="color:var(--black);font-weight:600;border-bottom:1px solid currentColor;">hello@dropaudio.lt</a></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <img class="footer-logo" src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO">
+        <div class="footer-contact">
+          <a href="mailto:hello@dropaudio.lt">hello@dropaudio.lt</a>
+          <a href="tel:+37061069726">+370 610 69 726</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Paslaugos</div>
+        <ul class="footer-links">
+          <li><a href="tv-reklamos.html">TV ir radijo reklamos įgarsinimas</a></li>
+          <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+          <li><a href="muzikos-kuryba.html">Originalios muzikos kūryba</a></li>
+          <li><a href="animacijos-igarsinimas.html">Animacijos ir audioknygų įgarsinimas</a></li>
+          <li><a href="garso-adaptacija.html">Garso adaptacija ir lokalizacija</a></li>
+          <li><a href="ivr.html">IVR ir autoatsakikliai</a></li>
+          <li><a href="audiobrandingas.html">Audiobrandingas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-h">DROPAUDIO</div>
+        <ul class="footer-links">
+          <li><a href="apie.html">Apie mus</a></li>
+          <li><a href="visi-darbai.html">Atlikti darbai</a></li>
+          <li><a href="balsai.html">Balsai</a></li>
+          <li><a href="mailto:hello@dropaudio.lt">Susisiekti</a></li>
+          <li><a href="https://shop.dropaudio.lt/" target="_blank" rel="noopener">Elektroninė parduotuvė</a></li>
+          <li><a href="http://www.dropaudio.lt/esparama" target="_blank" rel="noopener">ES parama</a></li>
+          <li><a href="privatumo-politika.html">Privatumo politika</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-copy">© 2026 DROP AUDIO UAB — Vilnius, Lithuania</span>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/dropaudio/" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.instagram.com/dropaudio_lithuania/" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.linkedin.com/company/drop-audio/" target="_blank" rel="noopener">LI</a>
+        <a href="https://www.youtube.com/channel/UCNv2Iu15EPPxlIArCiTl3eQ" target="_blank" rel="noopener">YT</a>
+        <a href="https://soundcloud.com/dropaudio" target="_blank" rel="noopener">SC</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+function toggleNav(){document.getElementById('drawer').classList.toggle('open');}
+function closeNav(){document.getElementById('drawer').classList.remove('open');}
+</script>
+
+</body>
+</html>
