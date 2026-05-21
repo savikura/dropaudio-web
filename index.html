@@ -344,7 +344,8 @@
   <div class="container">
     <div class="s-label">PORTFOLIO</div>
     <h2 class="s-title white" data-t="work_title">Atlikti darbai</h2>
-    <div class="work-grid">
+    <!-- LT videos (default) -->
+    <div class="work-grid" id="workGridLT">
 
       <div class="work-card">
         <div class="video-wrap">
@@ -371,6 +372,39 @@
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/HqGXPrPo2zM?rel=0&modestbranding=1"
             title="Vaikų linija" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EN videos (Vimeo, shown only in EN) -->
+    <div class="work-grid" id="workGridEN" style="display:none">
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1035742177?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="DROPAUDIO — 1" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1035758824?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="DROPAUDIO — 2" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1035733922?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="DROPAUDIO — 3" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1035735125?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="DROPAUDIO — 4" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
 
@@ -605,6 +639,8 @@ function setLang(l) {
   });
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
   document.documentElement.lang = l; localStorage.setItem("dropaudio_lang", l);
+  const wlt=document.getElementById('workGridLT'),wen=document.getElementById('workGridEN');
+  if(wlt&&wen){wlt.style.display=l==='en'?'none':'';wen.style.display=l==='en'?'':'none';}
   document.title = l === 'en'
     ? 'DROPAUDIO — Full-service audio agency, recording studios in Vilnius'
     : 'DROPAUDIO — Audio agentūra, garso įrašų studijos Vilniuje';
