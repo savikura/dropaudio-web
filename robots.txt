@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dropaudio.lt/sitemap.xml
