@@ -129,9 +129,17 @@
     .btn-dark:hover { opacity: 0.8; }
 
     /* ─── STUDIO PHOTO ─── */
-    .studio-photo-wrap { line-height: 0; }
-    .studio-photo-wrap img { width: 100%; height: 480px; object-fit: cover; object-position: center; display: block; }
-    @media (max-width: 560px) { .studio-photo-wrap img { height: 260px; } }
+    .studio-photo-wrap { line-height: 0; position: relative; overflow: hidden; height: 480px; }
+    @media (max-width: 560px) { .studio-photo-wrap { height: 260px; } }
+    .carousel-track { display: flex; height: 100%; transition: transform .5s ease; }
+    .carousel-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(35,31,32,.55); border: none; color: #fff; font-size: 22px; line-height: 1; padding: 14px 18px; cursor: pointer; z-index: 5; transition: background .2s; }
+    .carousel-btn:hover { background: rgba(35,31,32,.85); }
+    .carousel-btn.prev { left: 16px; }
+    .carousel-btn.next { right: 16px; }
+    .carousel-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 5; }
+    .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.4); border: none; cursor: pointer; padding: 0; transition: background .2s; }
+    .carousel-dot.active { background: #fff; }
 
     /* ─── FOOTER ─── */
     footer{background:var(--black);padding:64px 0 36px}.footer-grid{display:grid;grid-template-columns:180px 1fr 1fr;gap:56px;margin-bottom:52px}.footer-logo{height:33px;margin-bottom:22px}.footer-contact a{display:block;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:6px;transition:color .2s}.footer-contact a:hover{color:var(--white)}.footer-col-h{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px}.footer-links{list-style:none}.footer-links li{margin-bottom:10px}.footer-links a{font-size:13px;color:rgba(255,255,255,.55);transition:color .2s}.footer-links a:hover{color:var(--white)}.footer-bar{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.footer-copy{font-family:'Ahamono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:1px}.footer-social{display:flex;gap:20px}.footer-social a{font-family:'Ahamono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;transition:color .2s}.footer-social a:hover{color:var(--white)}
@@ -194,7 +202,7 @@
   <div class="container">
     <span class="page-label">DROPAUDIO</span>
     <h1 class="page-h1" data-t="ph_h1">Audio paslaugos Baltijos rinkai</h1>
-    <p class="page-sub" data-t="ph_sub">Visas audio ciklas — nuo balsų atrankos iki broadcast-ready failo. Vienas partneris, viena atsakomybė, trijų Baltijos šalių kalbos.</p>
+    <p class="page-sub" data-t="ph_sub">Visas audio ciklas — nuo balsų atrankos iki broadcast-ready failo. Vienas partneris, viena atsakomybė.</p>
   </div>
 </section>
 
@@ -273,9 +281,24 @@
   </div>
 </section>
 
-<!-- ══════ STUDIO PHOTO ══════ -->
-<div class="studio-photo-wrap">
-  <img src="Nuotraukos/paslaugos.jpg" alt="DROPAUDIO studija — garso įrašų procesas">
+<!-- ══════ STUDIO CAROUSEL ══════ -->
+<div class="studio-photo-wrap" id="studioCarousel">
+  <div class="carousel-track" id="carouselTrack">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 1.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 10.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 35.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 37.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 49.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 57 horiz.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 61.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 63.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio originalus dydis 8.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio vox originalus dydis 1.jpg" alt="DROPAUDIO studija">
+    <img src="Nuotraukos/Atrinktos studijos nuotraukos/Dropaudio vox originalus dydis 17.jpg" alt="DROPAUDIO studija">
+  </div>
+  <button class="carousel-btn prev" id="carPrev">&#8592;</button>
+  <button class="carousel-btn next" id="carNext">&#8594;</button>
+  <div class="carousel-dots" id="carDots"></div>
 </div>
 
 <!-- ══════ PROCESS ══════ -->
@@ -312,8 +335,8 @@
 <section id="clients">
   <div class="container">
     <div class="s-label">KLIENTAI</div>
-    <h2 class="s-title dark" data-t="cl_title">Kas mums pasitiki</h2>
-    <p class="clients-intro" data-t="cl_desc">17 metų dirbame su tarptautiniais prekės ženklais, reklamos agentūromis ir lokalizacijos biurais visame pasaulyje.</p>
+    <h2 class="s-title dark" data-t="cl_title">Kas mums pasitiki?</h2>
+    <p class="clients-intro" data-t="cl_desc">17 metų dirbame su tarptautiniais ir lokaliais prekės ženklais, viešuoju sektoriumi ir reklamos agentūromis visame pasaulyje.</p>
     <div class="clients-list">
       <span class="client-tag">Coca-Cola</span>
       <span class="client-tag">IKEA</span>
@@ -405,7 +428,7 @@ const T = {
     nav_about: 'Apie mus', nav_services: 'Paslaugos', nav_work: 'Atlikti darbai',
     nav_voices: 'Balsai', nav_cta: 'Susisiekti',
     ph_h1: 'Audio paslaugos Baltijos rinkai',
-    ph_sub: 'Visas audio ciklas — nuo balsų atrankos iki broadcast-ready failo. Vienas partneris, viena atsakomybė, trijų Baltijos šalių kalbos.',
+    ph_sub: 'Visas audio ciklas — nuo balsų atrankos iki broadcast-ready failo. Vienas partneris, viena atsakomybė.',
     sl_title: 'Ką mes darome',
     svc_1_name: 'TV ir radijo reklamos įgarsinimas',
     svc_1_desc: 'Profesionalus balsų talentas, casting, scenarijaus redakcija ir broadcast-ready įrašas. Lietuviškai, latviškai, estiškai — viename procese.',
@@ -428,8 +451,8 @@ const T = {
     proc_2_name: 'Talentų atranka', proc_2_desc: 'Iš 900+ balsų duomenų bazės parenkami tinkami kandidatai. Klientas patvirtina arba gauname demo.',
     proc_3_name: 'Įrašymas', proc_3_desc: 'Mūsų studijoje arba nuotoliniu ryšiu. Realaus laiko ryšys su klientu jei reikia kryptingo režisavimo.',
     proc_4_name: 'Pristatymas', proc_4_desc: 'Broadcast-ready failai pagal medijų technines specifikacijas.',
-    cl_title: 'Kas mums pasitiki',
-    cl_desc: '17 metų dirbame su tarptautiniais prekės ženklais, reklamos agentūromis ir lokalizacijos biurais visame pasaulyje.',
+    cl_title: 'Kas mums pasitiki?',
+    cl_desc: '17 metų dirbame su tarptautiniais ir lokaliais prekės ženklais, viešuoju sektoriumi ir reklamos agentūromis visame pasaulyje.',
     cta_title: 'Pradėkime nuo pokalbio',
     cta_desc: 'Papasakokite apie projektą — įvertinsime ir pasiūlysime sprendimą. Be įsipareigojimų.',
     cta_btn: 'Rašyti mums',
@@ -515,6 +538,20 @@ window.addEventListener('scroll', () => {
   }
 })();
 (function(){var _l=localStorage.getItem("dropaudio_lang");if(_l==="en")setLang("en");})();
+(function(){
+  const track=document.getElementById('carouselTrack');
+  const dotsWrap=document.getElementById('carDots');
+  if(!track)return;
+  const imgs=track.querySelectorAll('img');
+  const total=imgs.length;
+  let cur=0,timer;
+  imgs.forEach((_,i)=>{const d=document.createElement('button');d.className='carousel-dot'+(i===0?' active':'');d.addEventListener('click',()=>go(i));dotsWrap.appendChild(d);});
+  function go(n){cur=(n+total)%total;track.style.transform='translateX(-'+cur*100+'%)';dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));resetTimer();}
+  function resetTimer(){clearInterval(timer);timer=setInterval(()=>go(cur+1),4500);}
+  document.getElementById('carPrev').addEventListener('click',()=>go(cur-1));
+  document.getElementById('carNext').addEventListener('click',()=>go(cur+1));
+  resetTimer();
+})();
 </script>
 </body>
 </html>
