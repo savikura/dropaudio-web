@@ -117,8 +117,13 @@
     /* ─── CLIENTS ─── */
     #clients { background: var(--light); padding: 80px 0; }
     .clients-intro { font-size: 15px; color: var(--grey); line-height: 1.65; max-width: 560px; margin-bottom: 48px; }
-    .clients-list { display: flex; flex-wrap: wrap; gap: 12px; }
-    .client-tag { font-family: 'Ahamono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); border: 1px solid #D0CECC; padding: 8px 16px; }
+    /* ─── LOGO STRIP ─── */
+    .logo-strip { overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
+    .logo-strip-track { display: flex; align-items: center; gap: 72px; animation: logo-scroll 30s linear infinite; width: max-content; }
+    .logo-strip-track:hover { animation-play-state: paused; }
+    .logo-strip-track img { height: 38px; width: auto; flex-shrink: 0; filter: grayscale(1) opacity(0.45); transition: filter 0.25s; }
+    .logo-strip-track img:hover { filter: grayscale(0) opacity(1); }
+    @keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ─── CONTACT CTA ─── */
     #contact-cta { background: var(--yellow); padding: 96px 0; }
@@ -129,10 +134,9 @@
     .btn-dark:hover { opacity: 0.8; }
 
     /* ─── STUDIO PHOTO ─── */
-    .studio-photo-wrap { line-height: 0; position: relative; overflow: hidden; height: 480px; }
-    @media (max-width: 560px) { .studio-photo-wrap { height: 260px; } }
-    .carousel-track { display: flex; height: 100%; transition: transform .5s ease; }
-    .carousel-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .studio-photo-wrap { line-height: 0; position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/9; background: var(--black); }
+    .carousel-track { display: flex; width: 100%; height: 100%; transition: transform .5s ease; }
+    .carousel-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: var(--black); }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(35,31,32,.55); border: none; color: #fff; font-size: 22px; line-height: 1; padding: 14px 18px; cursor: pointer; z-index: 5; transition: background .2s; }
     .carousel-btn:hover { background: rgba(35,31,32,.85); }
     .carousel-btn.prev { left: 16px; }
@@ -337,20 +341,34 @@
     <div class="s-label">KLIENTAI</div>
     <h2 class="s-title dark" data-t="cl_title">Kas mums pasitiki?</h2>
     <p class="clients-intro" data-t="cl_desc">17 metų dirbame su tarptautiniais ir lokaliais prekės ženklais, viešuoju sektoriumi ir reklamos agentūromis visame pasaulyje.</p>
-    <div class="clients-list">
-      <span class="client-tag">Coca-Cola</span>
-      <span class="client-tag">IKEA</span>
-      <span class="client-tag">Vinted</span>
-      <span class="client-tag">Ignitis</span>
-      <span class="client-tag">P&amp;G</span>
-      <span class="client-tag">Colgate-Palmolive</span>
-      <span class="client-tag">BMW</span>
-      <span class="client-tag">Western Union</span>
-      <span class="client-tag">Discovery Channel</span>
-      <span class="client-tag">DDB</span>
-      <span class="client-tag">TBWA</span>
-      <span class="client-tag">McCann</span>
-      <span class="client-tag">airBaltic</span>
+    <div class="logo-strip">
+      <div class="logo-strip-track">
+    <img src="logo/BMW-logo1.png" alt="BMW" loading="lazy">
+    <img src="logo/Colgate-logo1.png" alt="Colgate" loading="lazy">
+    <img src="logo/Discovery-chanel-logo1.png" alt="Discovery Channel" loading="lazy">
+    <img src="logo/Gilette_logo_grey.png" alt="Gillette" loading="lazy">
+    <img src="logo/Goodyear-logo1.png" alt="Goodyear" loading="lazy">
+    <img src="logo/Head-and-shoulders-logo1.png" alt="Head & Shoulders" loading="lazy">
+    <img src="logo/Karcher-logo1.png" alt="Kärcher" loading="lazy">
+    <img src="logo/OldSpice_logo_grey.png" alt="Old Spice" loading="lazy">
+    <img src="logo/Palmolive-logo1.png" alt="Palmolive" loading="lazy">
+    <img src="logo/Statoil-logo1.png" alt="Statoil" loading="lazy">
+    <img src="logo/Swedbank-logo1.png" alt="Swedbank" loading="lazy">
+    <img src="logo/WU-logo1.png" alt="Western Union" loading="lazy">
+        <!-- duplicate for seamless loop -->
+    <img src="logo/BMW-logo1.png" alt="BMW" loading="lazy">
+    <img src="logo/Colgate-logo1.png" alt="Colgate" loading="lazy">
+    <img src="logo/Discovery-chanel-logo1.png" alt="Discovery Channel" loading="lazy">
+    <img src="logo/Gilette_logo_grey.png" alt="Gillette" loading="lazy">
+    <img src="logo/Goodyear-logo1.png" alt="Goodyear" loading="lazy">
+    <img src="logo/Head-and-shoulders-logo1.png" alt="Head & Shoulders" loading="lazy">
+    <img src="logo/Karcher-logo1.png" alt="Kärcher" loading="lazy">
+    <img src="logo/OldSpice_logo_grey.png" alt="Old Spice" loading="lazy">
+    <img src="logo/Palmolive-logo1.png" alt="Palmolive" loading="lazy">
+    <img src="logo/Statoil-logo1.png" alt="Statoil" loading="lazy">
+    <img src="logo/Swedbank-logo1.png" alt="Swedbank" loading="lazy">
+    <img src="logo/WU-logo1.png" alt="Western Union" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -401,15 +419,15 @@
           <li><a href="visi-darbai.html" data-t="nav_work">Atlikti darbai</a></li>
           <li><a href="balsai.html" data-t="nav_voices">Balsai</a></li>
           <li><a href="mailto:hello@dropaudio.lt" data-t="nav_cta">Susisiekti</a></li>
-          <li><a href="#">ES parama</a></li>
-          <li><a href="#">Įgarsintojams</a></li>
+          <li><a href="https://shop.dropaudio.lt/" target="_blank" rel="noopener">Elektroninė parduotuvė</a></li>
+          <li><a href="http://www.dropaudio.lt/esparama" target="_blank" rel="noopener">ES parama</a></li>
         </ul>
       </div>
 
     </div>
 
     <div class="footer-bar">
-      <span class="footer-copy">© 2025 DROP AUDIO UAB — Vilnius, Lithuania</span>
+      <span class="footer-copy">© 2026 DROP AUDIO UAB — Vilnius, Lithuania</span>
       <div class="footer-social">
         <a href="https://www.facebook.com/dropaudio/" target="_blank" rel="noopener">FB</a>
         <a href="https://www.instagram.com/dropaudio_lithuania/" target="_blank" rel="noopener">IG</a>
