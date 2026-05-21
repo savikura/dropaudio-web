@@ -562,8 +562,8 @@ const T = {
     nav_about:'About us', nav_services:'Services', nav_work:'Portfolio',
     nav_voices:'Voice artists', nav_cta:'Get in touch',
     hero_label:'Baltic audio. Zero surprises.',
-    hero_h1:'Sound recording studio in Vilnius',
-    hero_sub:'Full-service audio production for the Baltic market. One contact for Lithuanian, Latvian and Estonian voice-overs — broadcast-ready, on spec, first take.',
+    hero_h1:'Full-service audio agency for the Baltic market',
+    hero_sub:'Full-service audio production. One contact for Lithuanian, Latvian and Estonian voice-overs — broadcast-ready, on spec, first take.',
     hero_cta:'Get in touch',
     services_title:'What we do',
     svc_1:'Lithuanian, Latvian &amp; Estonian voice-over',
@@ -606,7 +606,7 @@ function setLang(l) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
   document.documentElement.lang = l; localStorage.setItem("dropaudio_lang", l);
   document.title = l === 'en'
-    ? 'DROPAUDIO — Sound recording studio in Vilnius, Lithuania'
+    ? 'DROPAUDIO — Full-service audio agency, recording studios in Vilnius'
     : 'DROPAUDIO — Audio agentūra, garso įrašų studijos Vilniuje';
 }
 
