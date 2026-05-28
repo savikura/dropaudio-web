@@ -119,6 +119,29 @@
       font-size: clamp(36px, 5.5vw, 76px); font-weight: 900; color: var(--white);
       line-height: 1.0; letter-spacing: -0.5px; margin-bottom: 28px; max-width: 820px;
     }
+    .shake {
+      display: inline-block;
+      animation: shakeAndRotate 2.4s ease-in-out infinite;
+      color: var(--yellow);
+    }
+    @keyframes shakeAndRotate {
+      0%   { transform: translate(0px) rotate(0deg); }
+      1%   { transform: translate(6px, 2px) rotate(0deg); }
+      2%   { transform: translate(-2px, -5px) rotate(0deg); }
+      3%   { transform: translate(7px, 3px) rotate(0deg); }
+      4%   { transform: translate(-4px, -2px) rotate(0deg); }
+      5%   { transform: translate(-2px, -4px) rotate(0deg); }
+      6%   { transform: translate(0px) rotate(0deg); }
+      7%   { transform: translate(-6px, -2px) rotate(0deg); }
+      9%   { transform: translate(-4px, -2px) rotate(0deg); }
+      10%  { transform: translate(-2px, -4px) rotate(0deg); }
+      11%  { transform: translate(0px) rotate(0deg); }
+      12%  { transform: translate(-4px, -2px) rotate(0deg); }
+      13%  { transform: translate(-2px, -4px) rotate(0deg); }
+      14%  { transform: translate(0px) rotate(0deg); }
+      15%  { transform: translate(0px) rotate(0deg); }
+      100% { transform: translate(0px) rotate(0deg); }
+    }
     .hero-sub {
       font-size: clamp(15px, 1.6vw, 18px); font-weight: 400;
       color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 540px; margin-bottom: 44px;
@@ -611,7 +634,7 @@ const T = {
     nav_about:'Apie mus', nav_services:'Paslaugos', nav_work:'Atlikti darbai',
     nav_voices:'Balsai', nav_cta:'Susisiekti',
     hero_label:'Garso agentūra ir įrašų studijos Vilniuje',
-    hero_h1:'Garso projektai ir vadyba, kurie skamba.',
+    hero_h1:'<span class="shake">Garso</span> projektai ir vadyba, kurie skamba.',
     hero_sub:'Reklamos įgarsinimas, muzikos kūryba, garso dizainas – visas audio projektas nuo pirmo aptarimo iki transliacijai paruošto failo.',
     hero_cta:'Susisiekti',
     services_title:'Mūsų paslaugos',
@@ -645,7 +668,7 @@ const T = {
     nav_about:'About us', nav_services:'Services', nav_work:'Portfolio',
     nav_voices:'Voice artists', nav_cta:'Get in touch',
     hero_label:'Baltic audio. Zero surprises.',
-    hero_h1:'Full-service audio agency for the Baltic market',
+    hero_h1:'Full-service <span class="shake">audio</span> agency for the Baltic market',
     hero_sub:'Full-service audio production. One contact for Lithuanian, Latvian and Estonian voice-overs — broadcast-ready, on spec, first take.',
     hero_cta:'Get in touch',
     services_title:'What we do',
