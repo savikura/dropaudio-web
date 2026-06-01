@@ -94,11 +94,24 @@
 
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh; background: linear-gradient(rgba(35,31,32,.84),rgba(35,31,32,.84)),url('Nuotraukos/beton-h.jpg') center/cover no-repeat;
+      min-height: 100vh; background: linear-gradient(rgba(35,31,32,.65),rgba(35,31,32,.65)),url('Nuotraukos/beton-h.jpg') center/cover no-repeat;
       display: flex; flex-direction: column; justify-content: flex-end;
       padding-top: 96px; position: relative; overflow: hidden;
     }
 
+
+    /* Hero sound wave blobs */
+    @keyframes waveFloat1{0%,100%{transform:translateY(0) scaleX(1);opacity:.20}50%{transform:translateY(-18px) scaleX(1.07);opacity:.30}}
+    @keyframes waveFloat2{0%,100%{transform:translateY(0) scaleX(1);opacity:.15}50%{transform:translateY(13px) scaleX(.93);opacity:.24}}
+    @keyframes waveFloat3{0%,100%{transform:translateY(0) scaleX(1);opacity:.12}50%{transform:translateY(-9px) scaleX(1.05);opacity:.20}}
+    @keyframes waveFloat4{0%,100%{transform:translateY(0) scaleX(1);opacity:.17}50%{transform:translateY(17px) scaleX(.96);opacity:.25}}
+    @keyframes waveFloat5{0%,100%{transform:translateY(0) scaleX(1);opacity:.10}50%{transform:translateY(-22px) scaleX(1.09);opacity:.18}}
+    .hero-wave{position:absolute;border-radius:50%;pointer-events:none;transform-origin:center}
+    .hw1{width:120%;height:130px;left:-10%;top:28%;background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 68%);animation:waveFloat1 22s ease-in-out infinite}
+    .hw2{width:85%;height:85px;left:8%;top:8%;background:radial-gradient(ellipse,rgba(0,0,0,.45) 0%,transparent 63%);animation:waveFloat2 28s ease-in-out infinite}
+    .hw3{width:95%;height:75px;left:4%;top:55%;background:radial-gradient(ellipse,rgba(0,0,0,.40) 0%,transparent 63%);animation:waveFloat3 20s ease-in-out infinite}
+    .hw4{width:65%;height:55px;left:18%;top:3%;background:radial-gradient(ellipse,rgba(0,0,0,.35) 0%,transparent 60%);animation:waveFloat4 34s ease-in-out infinite}
+    .hw5{width:75%;height:48px;left:13%;bottom:8%;background:radial-gradient(ellipse,rgba(0,0,0,.30) 0%,transparent 60%);animation:waveFloat5 25s ease-in-out infinite}
     /* DAW background decoration */
     .daw-bg {
       position: absolute; inset: 68px 0 0 0;
@@ -370,6 +383,11 @@
 <!-- ══════════════════ HERO ══════════════════ -->
 <section id="hero">
   <div class="daw-bg" id="dawBg"></div>
+  <div class="hero-wave hw1"></div>
+  <div class="hero-wave hw2"></div>
+  <div class="hero-wave hw3"></div>
+  <div class="hero-wave hw4"></div>
+  <div class="hero-wave hw5"></div>
   <div class="hero-content">
     <span class="hero-label" data-t="hero_label">Garso agentūra ir įrašų studijos Vilniuje</span>
     <h1 class="hero-h1" data-t="hero_h1"><span class="shake">Garso</span> projektai ir vadyba, kurie skamba.</h1>
