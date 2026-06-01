@@ -227,7 +227,7 @@
     .sc-wrap { overflow: hidden; }
 
     /* ─── CONTACT ─── */
-    #contact { background: var(--yellow); padding: 104px 0; }
+    @keyframes gradDrift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}#contact{position:relative;overflow:hidden;background:linear-gradient(135deg,#EEDF15 0%,#F5A800 28%,#F06800 52%,#F5A800 76%,#EEDF15 100%);background-size:300% 300%;animation:gradDrift 14s ease infinite;padding:104px 0}#contact>*{position:relative;z-index:1}#contact::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;background:#FF7A00;filter:blur(90px);opacity:.38;top:-130px;right:60px;transform:translateY(var(--glow-y,0));pointer-events:none}#contact::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;background:#F5C800;filter:blur(70px);opacity:.35;bottom:-90px;left:50px;transform:translateY(calc(var(--glow-y,0) * -.7));pointer-events:none}
     .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 64px; flex-wrap: wrap; }
     .contact-text { max-width: 560px; }
     .contact-cta-block { display: flex; flex-direction: column; gap: 24px; flex-shrink: 0; align-items: flex-start; }
@@ -751,6 +751,19 @@ function closeNav() {
   document.getElementById('drawer').classList.remove('open');
 }
 (function(){var _l=localStorage.getItem("dropaudio_lang");if(_l==="en")setLang("en");})();
+</script>
+<script>
+(function(){
+  var s=document.querySelector('#contact-cta,#contact');
+  if(!s)return;
+  function upd(){
+    var r=s.getBoundingClientRect();
+    var mid=window.innerHeight/2-r.top-r.height/2;
+    s.style.setProperty('--glow-y',(mid*0.06)+'px');
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
 </script>
 </body>
 </html>
