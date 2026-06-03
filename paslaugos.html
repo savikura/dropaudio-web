@@ -164,7 +164,18 @@
       .footer-grid { grid-template-columns: 1fr; }
       .contact-cta-inner { flex-direction: column; align-items: flex-start; }
     }
-  </style>
+  
+    .nav-has-dd{position:relative}
+    .nav-has-dd>a{display:flex;align-items:center;gap:5px}
+    .nav-dd-arrow{font-size:9px;opacity:.5;transition:transform .2s;line-height:1}
+    .nav-has-dd:hover .nav-dd-arrow{transform:rotate(90deg)}
+    .nav-dropdown{display:none;position:absolute;top:calc(100% + 10px);left:-16px;background:#111;border:1px solid rgba(255,255,255,.1);min-width:270px;padding:6px 0;z-index:200}
+    .nav-has-dd:hover .nav-dropdown{display:block}
+    .nav-dropdown li{margin:0}
+    .nav-dropdown a{font-size:12px!important;color:rgba(255,255,255,.6)!important;padding:9px 20px!important;display:block!important;white-space:nowrap;transition:color .15s,background .15s;letter-spacing:.2px}
+    .nav-dropdown a:hover{color:var(--yellow)!important;background:rgba(255,255,255,.04)}
+    .drawer-sub a{padding-left:28px!important;font-size:12px!important;color:rgba(255,255,255,.45)!important;border-bottom-color:rgba(255,255,255,.04)!important}
+    </style>
   <link rel="alternate" hreflang="lt" href="https://dropaudio.lt/paslaugos.html">
   <link rel="alternate" hreflang="en" href="https://dropaudio.lt/paslaugos.html">
   <link rel="alternate" hreflang="x-default" href="https://dropaudio.lt/paslaugos.html">
@@ -182,7 +193,20 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html#about" data-t="nav_about">Apie mus</a></li>
-      <li><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos</a></li>
+      <li class="nav-has-dd"><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos <span class="nav-dd-arrow">›</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="tv-reklamos.html">TV ir radijo reklamos įgarsinimas</a></li>
+        <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+        <li><a href="muzikos-kuryba.html">Muzikos kūryba ir kompozicija</a></li>
+        <li><a href="garso-adaptacija.html">Garso adaptacija ir lokalizacija</a></li>
+        <li><a href="audiobrandingas.html">Audio branding</a></li>
+        <li><a href="garso-dizainas.html">Garso dizainas</a></li>
+        <li><a href="ivr.html">IVR – autoatsakiklio įgarsinimas</a></li>
+        <li><a href="animacijos-igarsinimas.html">Animacijos ir filmukų įgarsinimas</a></li>
+        <li><a href="serialu-dublazas.html">Serialų ir filmų dubliažas</a></li>
+        <li><a href="audioknygos-igarsinimas.html">Audioknygų įgarsinimas</a></li>
+      </ul>
+    </li>
       <li><a href="visi-darbai.html" data-t="nav_work">Atlikti darbai</a></li>
       <li><a href="balsai.html" data-t="nav_voices">Balsai</a></li>
     </ul>
@@ -203,6 +227,16 @@
   <ul>
     <li><a href="index.html#about" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
     <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li class="drawer-sub"><a href="tv-reklamos.html" onclick="closeNav()">TV ir radijo reklamos</a></li>
+    <li class="drawer-sub"><a href="audio-reklamos.html" onclick="closeNav()">Audio reklamos gamyba</a></li>
+    <li class="drawer-sub"><a href="muzikos-kuryba.html" onclick="closeNav()">Muzikos kūryba</a></li>
+    <li class="drawer-sub"><a href="garso-adaptacija.html" onclick="closeNav()">Garso adaptacija</a></li>
+    <li class="drawer-sub"><a href="audiobrandingas.html" onclick="closeNav()">Audio branding</a></li>
+    <li class="drawer-sub"><a href="garso-dizainas.html" onclick="closeNav()">Garso dizainas</a></li>
+    <li class="drawer-sub"><a href="ivr.html" onclick="closeNav()">IVR įgarsinimas</a></li>
+    <li class="drawer-sub"><a href="animacijos-igarsinimas.html" onclick="closeNav()">Animacijos įgarsinimas</a></li>
+    <li class="drawer-sub"><a href="serialu-dublazas.html" onclick="closeNav()">Serialų dubliažas</a></li>
+    <li class="drawer-sub"><a href="audioknygos-igarsinimas.html" onclick="closeNav()">Audioknygų įgarsinimas</a></li>
     <li><a href="visi-darbai.html" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
     <li><a href="balsai.html" onclick="closeNav()" data-t="nav_voices">Balsai</a></li>
     <li><a href="mailto:hello@dropaudio.lt" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>

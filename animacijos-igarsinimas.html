@@ -27,7 +27,18 @@
     footer{background:var(--black);padding:64px 0 36px}.footer-grid{display:grid;grid-template-columns:180px 1fr 1fr;gap:56px;margin-bottom:52px}.footer-logo{height:33px;margin-bottom:22px}.footer-contact a{display:block;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:6px;transition:color .2s}.footer-contact a:hover{color:var(--white)}.footer-col-h{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px}.footer-links{list-style:none}.footer-links li{margin-bottom:10px}.footer-links a{font-size:13px;color:rgba(255,255,255,.55);transition:color .2s}.footer-links a:hover{color:var(--white)}.footer-bar{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.footer-copy{font-family:'Ahamono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:1px}.footer-social{display:flex;gap:20px}.footer-social a{font-family:'Ahamono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;transition:color .2s}.footer-social a:hover{color:var(--white)}
     @media(max-width:960px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.detail-grid{grid-template-columns:1fr}.detail-sidebar{position:static}.process-steps{grid-template-columns:repeat(2,1fr)}.related-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr;gap:40px}}
     @media(max-width:560px){.process-steps,.related-grid,.footer-grid{grid-template-columns:1fr}.contact-cta-inner{flex-direction:column;align-items:flex-start}}
-  </style>
+  
+    .nav-has-dd{position:relative}
+    .nav-has-dd>a{display:flex;align-items:center;gap:5px}
+    .nav-dd-arrow{font-size:9px;opacity:.5;transition:transform .2s;line-height:1}
+    .nav-has-dd:hover .nav-dd-arrow{transform:rotate(90deg)}
+    .nav-dropdown{display:none;position:absolute;top:calc(100% + 10px);left:-16px;background:#111;border:1px solid rgba(255,255,255,.1);min-width:270px;padding:6px 0;z-index:200}
+    .nav-has-dd:hover .nav-dropdown{display:block}
+    .nav-dropdown li{margin:0}
+    .nav-dropdown a{font-size:12px!important;color:rgba(255,255,255,.6)!important;padding:9px 20px!important;display:block!important;white-space:nowrap;transition:color .15s,background .15s;letter-spacing:.2px}
+    .nav-dropdown a:hover{color:var(--yellow)!important;background:rgba(255,255,255,.04)}
+    .drawer-sub a{padding-left:28px!important;font-size:12px!important;color:rgba(255,255,255,.45)!important;border-bottom-color:rgba(255,255,255,.04)!important}
+    </style>
   <link rel="alternate" hreflang="lt" href="https://dropaudio.lt/animacijos-igarsinimas.html">
   <link rel="alternate" hreflang="en" href="https://dropaudio.lt/animacijos-igarsinimas.html">
   <link rel="alternate" hreflang="x-default" href="https://dropaudio.lt/animacijos-igarsinimas.html">
@@ -70,7 +81,20 @@
     <a href="index.html" class="nav-logo"><img src="fonts/Dropaudio_logo_white.png" alt="DROPAUDIO"></a>
     <ul class="nav-links">
       <li><a href="index.html#about" data-t="nav_about">Apie mus</a></li>
-      <li><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos</a></li>
+      <li class="nav-has-dd"><a href="paslaugos.html" class="active" data-t="nav_services">Paslaugos <span class="nav-dd-arrow">›</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="tv-reklamos.html">TV ir radijo reklamos įgarsinimas</a></li>
+        <li><a href="audio-reklamos.html">Audio reklamos gamyba</a></li>
+        <li><a href="muzikos-kuryba.html">Muzikos kūryba ir kompozicija</a></li>
+        <li><a href="garso-adaptacija.html">Garso adaptacija ir lokalizacija</a></li>
+        <li><a href="audiobrandingas.html">Audio branding</a></li>
+        <li><a href="garso-dizainas.html">Garso dizainas</a></li>
+        <li><a href="ivr.html">IVR – autoatsakiklio įgarsinimas</a></li>
+        <li><a href="animacijos-igarsinimas.html">Animacijos ir filmukų įgarsinimas</a></li>
+        <li><a href="serialu-dublazas.html">Serialų ir filmų dubliažas</a></li>
+        <li><a href="audioknygos-igarsinimas.html">Audioknygų įgarsinimas</a></li>
+      </ul>
+    </li>
       <li><a href="visi-darbai.html" data-t="nav_work">Atlikti darbai</a></li>
       <li><a href="balsai.html" data-t="nav_voices">Balsai</a></li>
     </ul>
@@ -88,6 +112,16 @@
   <ul>
     <li><a href="index.html#about" onclick="closeNav()" data-t="nav_about">Apie mus</a></li>
     <li><a href="paslaugos.html" onclick="closeNav()" data-t="nav_services">Paslaugos</a></li>
+    <li class="drawer-sub"><a href="tv-reklamos.html" onclick="closeNav()">TV ir radijo reklamos</a></li>
+    <li class="drawer-sub"><a href="audio-reklamos.html" onclick="closeNav()">Audio reklamos gamyba</a></li>
+    <li class="drawer-sub"><a href="muzikos-kuryba.html" onclick="closeNav()">Muzikos kūryba</a></li>
+    <li class="drawer-sub"><a href="garso-adaptacija.html" onclick="closeNav()">Garso adaptacija</a></li>
+    <li class="drawer-sub"><a href="audiobrandingas.html" onclick="closeNav()">Audio branding</a></li>
+    <li class="drawer-sub"><a href="garso-dizainas.html" onclick="closeNav()">Garso dizainas</a></li>
+    <li class="drawer-sub"><a href="ivr.html" onclick="closeNav()">IVR įgarsinimas</a></li>
+    <li class="drawer-sub"><a href="animacijos-igarsinimas.html" onclick="closeNav()">Animacijos įgarsinimas</a></li>
+    <li class="drawer-sub"><a href="serialu-dublazas.html" onclick="closeNav()">Serialų dubliažas</a></li>
+    <li class="drawer-sub"><a href="audioknygos-igarsinimas.html" onclick="closeNav()">Audioknygų įgarsinimas</a></li>
     <li><a href="visi-darbai.html" onclick="closeNav()" data-t="nav_work">Atlikti darbai</a></li>
     <li><a href="mailto:hello@dropaudio.lt" onclick="closeNav()" data-t="nav_cta">Susisiekti</a></li>
   </ul>
