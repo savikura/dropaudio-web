@@ -42,6 +42,11 @@
     .nav-cta:hover{opacity:.85}
     .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
     .hamburger span{display:block;width:22px;height:2px;background:#fff;transition:.3s}
+    .nav-drawer{display:none;position:fixed;top:72px;left:0;right:0;background:var(--black);z-index:99;padding:24px var(--pad) 32px}
+    .nav-drawer.open{display:block}
+    .nav-drawer ul{list-style:none}
+    .nav-drawer li{border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-drawer a{display:block;padding:14px 0;font-size:15px;color:rgba(255,255,255,.8)}
 
     .page-hero{background:linear-gradient(rgba(35,31,32,.84),rgba(35,31,32,.84)),url('Nuotraukos/beton-h.jpg') center/cover no-repeat;padding:144px 0 80px;position:relative;overflow:hidden}
     .page-hero .container{position:relative;z-index:2}
