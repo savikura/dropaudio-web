@@ -131,7 +131,14 @@
     .policy-section td{padding:12px 0;font-size:14px;border-bottom:1px solid #E0DEDB}
     .policy-section td:first-child{color:var(--grey);font-family:'Ahamono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;width:50%}
     .policy-section td:last-child{font-weight:700;color:var(--black)}
-    </style>
+    
+  /* Cookie banner */
+  #cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:#111;color:#fff;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 24px rgba(0,0,0,.35);max-width:560px;width:calc(100% - 48px);font-size:14px;line-height:1.4}
+  #cookie-banner a{color:rgba(255,255,255,.6);text-decoration:underline}
+  #cookie-banner a:hover{color:#fff}
+  #cookie-ok{background:#fff;color:#111;border:none;border-radius:6px;padding:8px 20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;letter-spacing:.04em;flex-shrink:0}
+  #cookie-ok:hover{background:#f0f0f0}
+</style>
 </head>
 <body>
 
@@ -340,5 +347,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (saved && saved !== 'lt') setLang(saved);
 });
 </script>
+  <div id="cookie-banner" style="display:none">
+    <span id="cookie-text">Šioje svetainėje naudojami slapukai. <a href="/dropaudio-web/privatumo-politika.html" id="cookie-link">Privatumo politika</a></span>
+    <button id="cookie-ok">Gerai</button>
+  </div>
+  <script>
+    (function(){
+      if(localStorage.getItem('cookie_ok')==='1'){return;}
+      var b=document.getElementById('cookie-banner');
+      b.style.display='flex';
+      document.getElementById('cookie-ok').onclick=function(){
+        localStorage.setItem('cookie_ok','1');
+        b.style.display='none';
+      };
+      // Language-aware text
+      var texts={lt:{msg:'Šioje svetainėje naudojami slapukai. ',link:'Privatumo politika'},en:{msg:'This site uses cookies. ',link:'Privacy policy'}};
+      var pp={lt:'/dropaudio-web/privatumo-politika.html',en:'/dropaudio-web/privatumo-politika.html'};
+      function updateCookieLang(l){
+        var t=texts[l]||texts.lt;
+        document.getElementById('cookie-text').innerHTML=t.msg+'<a href="'+pp.lt+'" id="cookie-link">'+t.link+'</a>';
+        document.getElementById('cookie-ok').textContent=l==='en'?'OK':'Gerai';
+      }
+      // Hook into setLang if available
+      var _orig=window.setLang;
+      window.setLang=function(l){if(_orig)_orig(l);updateCookieLang(l);};
+      // Set initial lang
+      var initLang=(typeof lang!=='undefined'?lang:null)||localStorage.getItem('lang')||'lt';
+      updateCookieLang(initLang);
+    })();
+  </script>
 </body>
 </html>
