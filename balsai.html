@@ -75,8 +75,12 @@
     .filter-btn:hover{color:var(--white);border-color:rgba(255,255,255,.4)}
     .filter-btn.active{color:var(--black);background:var(--yellow);border-color:var(--yellow)}
 
+    /* INFO GRID (text + photo) */
+    .detail-grid{display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:start}
+    .detail-sidebar{position:sticky;top:100px}
+
     /* VOICE GRID */
-    .voices-layout{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:start}.voices-photo{position:sticky;top:100px}.voices-photo img{width:100%;display:block}.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.06)}
+    .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.06)}
 
     /* VOICE CARD */
     .voice-card{background:var(--black);padding:28px 24px 0}
@@ -99,12 +103,13 @@
     @media(max-width:960px){
       .nav-links,.nav-cta{display:none}
       .hamburger{display:flex}
-      .voices-layout{grid-template-columns:1fr;}.voice-grid{grid-template-columns:repeat(2,1fr)}
+      .detail-grid{grid-template-columns:1fr}
+      .detail-sidebar{position:static;display:none}
+      .voice-grid{grid-template-columns:repeat(2,1fr)}
       .footer-grid{grid-template-columns:1fr;gap:40px}
-      
     }
     @media(max-width:560px){
-      .voice-grid,.footer-grid{grid-template-columns:1fr}.voices-photo{display:none}
+      .voice-grid,.footer-grid{grid-template-columns:1fr}
       .contact-cta-inner{flex-direction:column;align-items:flex-start}
       .voices-intro{flex-direction:column;align-items:flex-start}
     }
@@ -161,12 +166,17 @@
 
 <section style="background:var(--white);padding:72px 0 56px">
   <div class="container">
-    <div style="max-width:720px">
-      <p style="font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:10px" data-t="voices_label">Balsų bazė</p>
-      <h2 style="font-size:clamp(22px,2.5vw,34px);font-weight:900;color:var(--black);margin-bottom:20px;line-height:1.1" data-t="voices_h2">Virš 900 balsų. Patirtis ir santykiai — ne tik sąrašas.</h2>
-      <p style="font-size:15px;color:#555;line-height:1.75;margin-bottom:16px" data-t="voices_p1">Mūsų garso studija įsikūrusi Vilniuje — sostinėje, kur gimsta rimčiausi teatro, televizijos ir kino projektai. Geriausi šalies aktoriai, diktoriai, TV ir radijo asmenybės irgi gyvena ir kuria čia. Dauguma jų — mūsų partneriai.</p>
-      <p style="font-size:15px;color:#555;line-height:1.75;margin-bottom:16px" data-t="voices_p2">Šis skaičius nėra tik failų krūva. Tai — patirtis ir santykiai, sukurti per ilgą laiką. Mes gerai žinome, ką gali (ir ko ne) kiekvienas balso savininkas, atsidūręs prieš mikrofoną.</p>
-      <p style="font-size:15px;color:#555;line-height:1.75" data-t="voices_p3">Kiekvienas projektas yra unikalus. Todėl kaskart kruopščiai atrenkame ir pasiūlome pačius tinkamiausius balsus. Dauguma mūsų talentų pasiruošę dirbti įspėjus vos prieš 1–2 dienas.</p>
+    <div class="detail-grid">
+      <div>
+        <p style="font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:10px" data-t="voices_label">Balsų bazė</p>
+        <h2 style="font-size:clamp(22px,2.5vw,34px);font-weight:900;color:var(--black);margin-bottom:20px;line-height:1.1" data-t="voices_h2">Virš 900 balsų. Patirtis ir santykiai — ne tik sąrašas.</h2>
+        <p style="font-size:15px;color:#555;line-height:1.75;margin-bottom:16px" data-t="voices_p1">Mūsų garso studija įsikūrusi Vilniuje — sostinėje, kur gimsta rimčiausi teatro, televizijos ir kino projektai. Geriausi šalies aktoriai, diktoriai, TV ir radijo asmenybės irgi gyvena ir kuria čia. Dauguma jų — mūsų partneriai.</p>
+        <p style="font-size:15px;color:#555;line-height:1.75;margin-bottom:16px" data-t="voices_p2">Šis skaičius nėra tik failų krūva. Tai — patirtis ir santykiai, sukurti per ilgą laiką. Mes gerai žinome, ką gali (ir ko ne) kiekvienas balso savininkas, atsidūręs prieš mikrofoną.</p>
+        <p style="font-size:15px;color:#555;line-height:1.75" data-t="voices_p3">Kiekvienas projektas yra unikalus. Todėl kaskart kruopščiai atrenkame ir pasiūlome pačius tinkamiausius balsus. Dauguma mūsų talentų pasiruošę dirbti įspėjus vos prieš 1–2 dienas.</p>
+      </div>
+      <div class="detail-sidebar">
+        <img src="Nuotraukos/animacijos-igarsinimas-foto.jpg" alt="DROPAUDIO balsų studija" style="width:100%;display:block">
+      </div>
     </div>
   </div>
 </section>
@@ -174,7 +184,6 @@
 
 <section id="voices">
   <div class="container">
-    <div class="voices-layout">
     <div class="voice-grid" id="voiceGrid">
 
       <!-- ── Laurynas ── -->
@@ -322,11 +331,6 @@
       </div>
 
     </div><!-- /voice-grid -->
-    </div><!-- /voices-layout col1 -->
-    <div class="voices-photo">
-      <img src="Nuotraukos/animacijos-igarsinimas-foto.jpg" alt="DROPAUDIO balsų studija" style="width:100%;display:block">
-    </div>
-    </div><!-- /voices-layout -->
   </div>
 </section>
 <section id="contact-cta">
