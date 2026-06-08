@@ -28,8 +28,7 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s}
-    nav.scrolled{background:var(--black);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);box-shadow:0 1px 0 rgba(255,255,255,.07)}
     .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:72px;display:flex;align-items:center;justify-content:space-between;gap:32px}
     .nav-logo img{height:54px}
     .nav-links{display:flex;gap:32px;list-style:none}
@@ -115,10 +114,11 @@
       .contact-cta-inner{flex-direction:column}
     }
   
-    .page-header{background:var(--light);padding:80px 0 56px;margin-top:72px}
-    .page-header .s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
-    .page-header h1{font-size:clamp(28px,3.5vw,48px);font-weight:900;color:var(--black);line-height:1.05;max-width:680px}
-    .policy-content{padding:80px 0 96px;background:var(--white)}
+    .page-header{background:var(--black);padding:120px 0 64px}
+    .page-header .s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+    .page-header h1{font-size:clamp(32px,4vw,56px);font-weight:900;color:var(--white);line-height:1.1}
+    .policy-content{padding:80px 0 100px}
+    .policy-content .container{max-width:780px}
     .policy-section{margin-bottom:56px}
     .policy-section h2{font-family:'Ahamono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid #E0DEDB}
     .policy-section p{font-size:15px;line-height:1.75;color:#3a3637;margin-bottom:16px}
