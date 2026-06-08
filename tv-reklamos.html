@@ -462,7 +462,7 @@ const T = {
     rel_2_n:'Audio reklamos gamyba', rel_2_d:'Radijo reklama nuo scenarijaus iki galutinio failo',
     rel_3_n:'Originalios muzikos kūryba', rel_3_d:'Džinglai ir teminės melodijos prekės ženklams',
     cta_h:'Turite projektą?', cta_p:'Atsiųskite scenarijų ir nurodykite terminus – įvertinsime per vieną darbo dieną.',
-    cta_btn:'Rašyti mums', faq_title:'Dažniausiai užduodami klausimai',fc_svc:'Paslaugos', fc_contact:'Kontaktai'
+    cta_btn:'Rašyti mums', faq_title:'Dažniausiai užduodami klausimai',exp_h:'Nuo balsų atrankos iki transliacijai paruošto failo',exp_p1:'TV reklama nėra vien tik įrašymas. Tai – balsų atranka pagal prekės ženklo toną, diktorių režisūra, muzikos ir garso efektų balansas bei galutinis garso suvedimas (miksas) pagal transliavimo kanalų technines specifikacijas. Visą šį procesą atliekame vienoje vietoje, su galimybe dirbti su tarptautiniais balsais realiu laiku.',exp_p2:'Dirbame su didžiausiais Lietuvos, Latvijos ir Estijos TV kanalais ir žinome jų techninius reikalavimus. Reklama pristatoma paruošta transliacijai: be papildomų televizijos inžinierių korekcijų.',exp_p3:'Mūsų klientų sąraše – „Discovery Channel", „Coca-Cola", „BMW", „IKEA" ir daugiau nei 200 kitų prekės ženklų. Iš agentūrų pusės bendradarbiaujame su „DDB", „TBWA" ir „McCann Erickson". Kiekvienas projektas traktuojamas individualiai: nuo 15 sekundžių radijo klipo iki ilgo dokumentinio filmo garso postprodukcijos.',fc_svc:'Paslaugos', fc_contact:'Kontaktai'
   },
   en: {
     nav_about:'About us', nav_services:'Services', nav_work:'Work', nav_voices:'Voices', nav_cta:'Contact',
@@ -496,7 +496,7 @@ const T = {
     rel_2_n:'Audio advertising production', rel_2_d:'Radio commercials from script to final file',
     rel_3_n:'Original music composition', rel_3_d:'Jingles and brand themes',
     cta_h:'Have a project?', cta_p:'Share your script and timeline — we\'ll assess it within a day.',
-    cta_btn:'Write to us', faq_title:'Frequently asked questions',fc_svc:'Services', fc_contact:'Contact'
+    cta_btn:'Write to us', faq_title:'Frequently asked questions',exp_h:'From voice casting to broadcast-ready file',exp_p1:'TV advertising is not just recording. It\'s voice casting by brand tone, director\'s work with narrators, music and sound effect balance, and final mix to broadcast channel technical specifications. We handle the entire process in one studio, with the option to work with international voices in real time.',exp_p2:'We work with the major Lithuanian, Latvian and Estonian TV channels and know their technical requirements. Advertising is delivered broadcast-ready — without additional corrections from television engineers.',exp_p3:'Our client list includes Discovery Channel, Coca-Cola, BMW, IKEA and over 200 other brands. On the agency side we work with DDB, TBWA and McCann Erickson. Every project is treated individually — from a 15-second radio spot to a long documentary audio post-production.',fc_svc:'Services', fc_contact:'Contact'
   }
 };
 
@@ -532,7 +532,7 @@ document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10
 })();
 </script>
   <div id="cookie-banner" style="display:none">
-    <span id="cookie-text">Šioje svetainėje naudojami slapukai. <a href="/dropaudio-web/privatumo-politika.html" id="cookie-link">Privatumo politika</a></span>
+    <span id="cookie-text">Šioje svetainėje naudojami slapukai. <a href="/privatumo-politika.html" id="cookie-link">Privatumo politika</a></span>
     <button id="cookie-ok">Gerai</button>
   </div>
   <script>
@@ -546,7 +546,7 @@ document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10
       };
       // Language-aware text
       var texts={lt:{msg:'Šioje svetainėje naudojami slapukai. ',link:'Privatumo politika'},en:{msg:'This site uses cookies. ',link:'Privacy policy'}};
-      var pp={lt:'/dropaudio-web/privatumo-politika.html',en:'/dropaudio-web/privatumo-politika.html'};
+      var pp={lt:'/privatumo-politika.html',en:'/privatumo-politika.html'};
       function updateCookieLang(l){
         var t=texts[l]||texts.lt;
         document.getElementById('cookie-text').innerHTML=t.msg+'<a href="'+pp.lt+'" id="cookie-link">'+t.link+'</a>';

@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
   <div id="cookie-banner" style="display:none">
-    <span id="cookie-text">Šioje svetainėje naudojami slapukai. <a href="/dropaudio-web/privatumo-politika.html" id="cookie-link">Privatumo politika</a></span>
+    <span id="cookie-text">Šioje svetainėje naudojami slapukai. <a href="/privatumo-politika.html" id="cookie-link">Privatumo politika</a></span>
     <button id="cookie-ok">Gerai</button>
   </div>
   <script>
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       // Language-aware text
       var texts={lt:{msg:'Šioje svetainėje naudojami slapukai. ',link:'Privatumo politika'},en:{msg:'This site uses cookies. ',link:'Privacy policy'}};
-      var pp={lt:'/dropaudio-web/privatumo-politika.html',en:'/dropaudio-web/privatumo-politika.html'};
+      var pp={lt:'/privatumo-politika.html',en:'/privatumo-politika.html'};
       function updateCookieLang(l){
         var t=texts[l]||texts.lt;
         document.getElementById('cookie-text').innerHTML=t.msg+'<a href="'+pp.lt+'" id="cookie-link">'+t.link+'</a>';
