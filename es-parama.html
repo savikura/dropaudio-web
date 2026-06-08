@@ -114,7 +114,19 @@
       .hamburger{display:flex}
       .contact-cta-inner{flex-direction:column}
     }
-  </style>
+  
+    .page-header{background:var(--light);padding:80px 0 56px;margin-top:72px}
+    .page-header .s-label{font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+    .page-header h1{font-size:clamp(28px,3.5vw,48px);font-weight:900;color:var(--black);line-height:1.05;max-width:680px}
+    .policy-content{padding:80px 0 96px;background:var(--white)}
+    .policy-section{margin-bottom:56px}
+    .policy-section h2{font-family:'Ahamono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid #E0DEDB}
+    .policy-section p{font-size:15px;line-height:1.75;color:#3a3637;margin-bottom:16px}
+    .policy-section table{border-collapse:collapse;width:100%;max-width:560px}
+    .policy-section td{padding:12px 0;font-size:14px;border-bottom:1px solid #E0DEDB}
+    .policy-section td:first-child{color:var(--grey);font-family:'Ahamono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;width:50%}
+    .policy-section td:last-child{font-weight:700;color:var(--black)}
+    </style>
 </head>
 <body>
 
@@ -151,49 +163,41 @@
   </ul>
 </div>
 
-<section class="page-hero">
+<div class="page-header">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">DROPAUDIO</a><span>›</span><span data-t="nav_contact">Kontaktai</span></div>
-    <h1 class="page-h1" data-t="h1">ES parama</h1>
-    <p class="page-sub" data-t="h1_sub">Informacija apie UAB DROP AUDIO Europos Sąjungos struktūrinių fondų finansuojamą projektą.</p>
+    <div class="s-label">Europos Sąjungos parama</div>
+    <h1>ES parama</h1>
   </div>
-</section>
+</div>
 
-<section id="es-content" style="padding:96px 0;background:var(--white)">
+<div class="policy-content">
   <div class="container">
-    <div style="max-width:720px">
-      <p style="font-family:'Ahamono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px">ES parama</p>
-      <h2 style="font-size:clamp(22px,2.5vw,34px);font-weight:900;color:var(--black);margin-bottom:32px;line-height:1.1">Elektroninių pardavimo sandorių sprendimo kūrimas</h2>
-      <p style="font-size:16px;color:#444;line-height:1.75;margin-bottom:20px">UAB „DROP AUDIO" įgyvendina projektą „Elektroninių pardavimo sandorių sprendimo kūrimas".</p>
-      <p style="font-size:16px;color:#444;line-height:1.75;margin-bottom:40px">Projekto tikslas – sukurti ir įdiegti elektroninių pardavimų sandorių sprendimą savo veikloje, taip pasiūlant klientams galimybę užsisakyti paslaugas internetu ir gerinti įmonės konkurencingumą.</p>
-      <div style="background:var(--light);padding:36px 40px;margin-bottom:40px">
-        <table style="border-collapse:collapse;width:100%">
-          <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
-            <td style="padding:12px 0;font-size:13px;color:var(--grey);font-family:'Ahamono',monospace;letter-spacing:1px;text-transform:uppercase;width:50%">Projekto biudžetas</td>
-            <td style="padding:12px 0;font-size:16px;font-weight:700;color:var(--black)">24 880 €</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
-            <td style="padding:12px 0;font-size:13px;color:var(--grey);font-family:'Ahamono',monospace;letter-spacing:1px;text-transform:uppercase">ES finansavimas</td>
-            <td style="padding:12px 0;font-size:16px;font-weight:700;color:var(--black)">12 440 €</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
-            <td style="padding:12px 0;font-size:13px;color:var(--grey);font-family:'Ahamono',monospace;letter-spacing:1px;text-transform:uppercase">Įgyvendinimo trukmė</td>
-            <td style="padding:12px 0;font-size:16px;font-weight:700;color:var(--black)">2024.06 – 2024.12</td>
-          </tr>
-          <tr>
-            <td style="padding:12px 0;font-size:13px;color:var(--grey);font-family:'Ahamono',monospace;letter-spacing:1px;text-transform:uppercase">Finansuoja</td>
-            <td style="padding:12px 0;font-size:16px;font-weight:700;color:var(--black)">Europos Sąjunga</td>
-          </tr>
-        </table>
-      </div>
-      <p style="font-size:14px;color:#777;line-height:1.75;margin-bottom:8px">UAB „DROP AUDIO" savo klientams siūlo efektyvią ir išskirtinę komunikaciją garsu.</p>
-      <p style="font-size:13px;color:#999;line-height:1.7">
-        El. p.: <a href="mailto:hello@dropaudio.lt" style="color:var(--black)">hello@dropaudio.lt</a> &nbsp;·&nbsp; Tel.: <a href="tel:+37061069726" style="color:var(--black)">+370 610 69726</a><br>
-        Daugiau informacijos: <a href="https://www.esinvesticijos.lt" target="_blank" rel="noopener" style="color:var(--black)">www.esinvesticijos.lt</a>
-      </p>
+
+    <div class="policy-section">
+      <h2>Projektas</h2>
+      <p>UAB „DROP AUDIO" įgyvendina projektą <strong>„Elektroninių pardavimo sandorių sprendimo kūrimas"</strong>.</p>
+      <p>Projekto tikslas – sukurti ir įdiegti elektroninių pardavimų sandorių sprendimą savo veikloje, taip pasiūlant klientams galimybę užsisakyti paslaugas internetu ir gerinti įmonės konkurencingumą.</p>
     </div>
+
+    <div class="policy-section">
+      <h2>Projekto duomenys</h2>
+      <table>
+        <tr><td>Projekto biudžetas</td><td>24 880 €</td></tr>
+        <tr><td>ES finansavimas</td><td>12 440 €</td></tr>
+        <tr><td>Įgyvendinimo trukmė</td><td>2024.06 – 2024.12</td></tr>
+        <tr><td>Finansuoja</td><td>Europos Sąjunga</td></tr>
+      </table>
+    </div>
+
+    <div class="policy-section">
+      <h2>Kontaktai</h2>
+      <p>UAB „DROP AUDIO" savo klientams siūlo efektyvią ir išskirtinę komunikaciją garsu.</p>
+      <p>El. p.: <a href="mailto:hello@dropaudio.lt" style="color:var(--black)">hello@dropaudio.lt</a> &nbsp;·&nbsp; Tel.: <a href="tel:+37061069726" style="color:var(--black)">+370 610 69726</a></p>
+      <p style="margin-top:8px"><a href="https://www.esinvesticijos.lt" target="_blank" rel="noopener" style="color:var(--black)">www.esinvesticijos.lt</a></p>
+    </div>
+
   </div>
-</section>
+</div>
 <style>#contact-main{padding:96px 0;background:var(--white)}</style>
 
 <footer>
