@@ -167,7 +167,7 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">DROPAUDIO</a><span>›</span><span data-t="nav_contact">Kontaktai</span></div>
+    <div class="breadcrumb"><a href="index.html">DROPAUDIO</a><span>›</span><span data-t="breadcrumb">Klientai</span></div>
     <h1 class="page-h1" data-t="h1">Mūsų klientai</h1>
     <p class="page-sub" data-t="h1_sub">Tarptautiniai prekių ženklai, reklamų agentūros ir leidyklos, pasitikėjusios DROPAUDIO garso projektais.</p>
   </div>
@@ -280,40 +280,26 @@
 var lang = localStorage.getItem('dropaudio_lang') || 'lt';
 const T = {
   lt: {
-    nav_about:'Apie mus', nav_services:'Paslaugos', nav_work:'Atlikti darbai', nav_voices:'Balsai', nav_cta:'Susisiekti', nav_contact:'Kontaktai',
-    h1:'Susisiekite su DROPAUDIO', h1_sub:'Aptarkite projektą, paprašykite pasiūlymo ar tiesiog užduokite klausimą. Atsakome per vieną darbo dieną.',
-    c_email_label:'El. paštas', c_email_sub:'Projektams, pasiūlymams, klausimams',
-    c_phone_label:'Telefonas', c_phone_sub:'Vidaus reikalams ir skubiems klausimams',
-    c_addr_label:'Adresas', c_addr_val:'Giedraičių g. 60B-106', c_addr_sub:'LT-08212 Vilnius, Lietuva',
-    c_hours_label:'Darbo laikas', c_hours_val:'I–V: 9:00–18:00', c_hours_sub:'Skubūs projektai — susitarimo tvarka',
-    c_note_title:'Kaip greičiausiai gauti atsakymą',
-    c_note_p1:'Projektams ir pasiūlymams — rašykite el. paštu. Geriausia pridėti scenarijų, video medžiagą ar brief\'ą, ir nurodyti terminus.',
-    c_note_p2:'Telefonas — vidaus klausimams ir skubiems atvejams. Jei neatsiliepiame, parašykite — perskambinsime.',
-    c_reg_title:'Įmonės rekvizitai',
-    c_reg_p:'UAB DROP AUDIO<br>Įmonės kodas: 302585321<br>PVM kodas: LT100010022619<br>Giedraičių g. 60B-106, LT-08212 Vilnius',
-    studio_label:'Studijos', studio_title:'Dvi ProTools studijos Vilniuje',
-    st1_name:'A studija — įrašų ir miksavimo', st1_desc:'Pilnai įrengta garso įrašų studija su atskiromis kontroline ir įrašymo patalpomis. ProTools HDX, atskirta akustinė aplinka.',
-    st2_name:'B studija — voice-over ir post-produkcija', st2_desc:'Specializuota balso įrašymo studija su nuotolinio įrašymo galimybe per SourceConnect.',
-    st3_name:'Nuotolinis įrašymas', st3_desc:'Dirbame su klientais visame pasaulyje per SourceConnect ir Cleanfeed. Nereikia fiziškai dalyvauti studijoje.',
+    nav_about:'Apie mus', nav_services:'Paslaugos', nav_work:'Atlikti darbai', nav_voices:'Balsai', nav_cta:'Susisiekti',
+    breadcrumb:'Klientai',
+    h1:'Mūsų klientai',
+    h1_sub:'Tarptautiniai prekių ženklai, reklamų agentūros ir leidyklos, pasitikėjusios DROPAUDIO garso projektais.',
+    clients_label:'Klientai',
+    clients_title:'166+ tarptautiniai klientai. Nuo 2007 m.',
+    clients_p1:'DROPAUDIO dirba su tarptautinėmis reklamų agentūromis ir prekių ženklais, kurie savo kampanijas adaptuoja Baltijos rinkai. Nuo 2007 metų sukūrėme garso projektus Discovery Channel, Coca-Cola, P&G, IKEA, BMW, Colgate-Palmolive ir Western Union.',
+    clients_p2:'Agentūrų klientai — DDB, TBWA, McCann Erickson. Dirbame kaip patikimas garso partneris tiek su vietiniais, tiek su tarptautiniais biudžetais.',
     cta_h:'Turite garso projektą?', cta_p:'Rašykite — įvertinsime ir pasiūlysime sprendimą per vieną darbo dieną.', cta_btn:'Rašyti mums',
     fc_svc:'Paslaugos', fc_contact:'Kontaktai'
   },
   en: {
-    nav_about:'About us', nav_services:'Services', nav_work:'Work', nav_voices:'Voices', nav_cta:'Contact', nav_contact:'Contact',
-    h1:'Get in touch with DROPAUDIO', h1_sub:'Discuss a project, request a quote, or just ask a question. We respond within one business day.',
-    c_email_label:'Email', c_email_sub:'For projects, quotes and questions',
-    c_phone_label:'Phone', c_phone_sub:'For internal matters and urgent requests',
-    c_addr_label:'Address', c_addr_val:'Giedraičių g. 60B-106', c_addr_sub:'LT-08212 Vilnius, Lithuania',
-    c_hours_label:'Working hours', c_hours_val:'Mon–Fri: 9:00–18:00', c_hours_sub:'Urgent projects by arrangement',
-    c_note_title:'How to get the fastest response',
-    c_note_p1:'For projects and quotes — email us. Best to include your script, video material or brief, and your deadline.',
-    c_note_p2:'Phone — for internal matters and urgent cases. If we don\'t answer, write to us — we\'ll call back.',
-    c_reg_title:'Company details',
-    c_reg_p:'UAB DROP AUDIO<br>Company code: 302585321<br>VAT code: LT100010022619<br>Giedraičių g. 60B-106, LT-08212 Vilnius',
-    studio_label:'Studios', studio_title:'Two ProTools studios in Vilnius',
-    st1_name:'Studio A — recording & mixing', st1_desc:'Fully equipped audio recording studio with separate control and recording rooms. ProTools HDX, isolated acoustic environment.',
-    st2_name:'Studio B — voice-over & post-production', st2_desc:'Dedicated voice recording studio with remote recording capability via SourceConnect.',
-    st3_name:'Remote recording', st3_desc:'We work with clients worldwide via SourceConnect and Cleanfeed. No need to be physically present in the studio.',
+    nav_about:'About us', nav_services:'Services', nav_work:'Work', nav_voices:'Voices', nav_cta:'Contact',
+    breadcrumb:'Clients',
+    h1:'Our clients',
+    h1_sub:'International brands, advertising agencies and publishers that have trusted DROPAUDIO with their audio projects.',
+    clients_label:'Clients',
+    clients_title:'166+ international clients. Since 2007.',
+    clients_p1:'DROPAUDIO works with international advertising agencies and brands adapting their campaigns for the Baltic market. Since 2007 we have created audio projects for Discovery Channel, Coca-Cola, P&G, IKEA, BMW, Colgate-Palmolive and Western Union.',
+    clients_p2:'Agency clients include DDB, TBWA and McCann Erickson. We work as a reliable audio partner with both local and international budgets.',
     cta_h:'Have an audio project?', cta_p:'Write to us — we\'ll assess it and propose a solution within one business day.', cta_btn:'Write to us',
     fc_svc:'Services', fc_contact:'Contact'
   }
@@ -328,8 +314,8 @@ function setLang(l) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
   document.documentElement.lang = l;
   localStorage.setItem('dropaudio_lang', l);
-  document.getElementById('page-title').textContent = l === 'lt' ? 'Kontaktai — DROPAUDIO' : 'Contact — DROPAUDIO';
-  document.getElementById('page-desc').setAttribute('content', l === 'lt' ? 'DROPAUDIO kontaktai: hello@dropaudio.lt, +370 610 69 726. Garso agentūra Vilniuje.' : 'DROPAUDIO contact: hello@dropaudio.lt, +370 610 69 726. Audio agency in Vilnius.');
+  document.getElementById('page-title').textContent = l === 'lt' ? 'Klientai — DROPAUDIO' : 'Clients — DROPAUDIO';
+  document.getElementById('page-desc').setAttribute('content', l === 'lt' ? 'DROPAUDIO klientai: Discovery Channel, Coca-Cola, P&G, IKEA, BMW, Colgate-Palmolive, Western Union ir kiti tarptautiniai prekių ženklai.' : 'DROPAUDIO clients: Discovery Channel, Coca-Cola, P&G, IKEA, BMW, Colgate-Palmolive, Western Union and more international brands.');
 }
 function toggleNav() {
   document.getElementById('drawer').classList.toggle('open');
